@@ -1,9 +1,9 @@
 package com.healthylife.interfaces.rest.auth;
 
-import com.healthylife.application.service.AuthenticationService;
-import com.healthylife.interfaces.rest.auth.dto.AuthenticationRequest;
+import com.healthylife.domain.user.User;
 import com.healthylife.interfaces.rest.auth.dto.AuthenticationResponse;
 import com.healthylife.interfaces.rest.auth.dto.RegisterRequest;
+import com.healthylife.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -19,76 +19,52 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
-@Tag(name = "Authentication", description = "Kimlik doğrulama ve kullanıcı yönetimi API'leri")
+@Tag(name = "Authentication", description = "Authentication management APIs")
 public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
-    @Operation(
-        summary = "Yeni kullanıcı kaydı",
-        description = "Sisteme yeni bir kullanıcı kaydeder ve JWT token döner"
-    )
-    @ApiResponses({
-        @ApiResponse(
-            responseCode = "200",
-            description = "Başarılı kayıt",
-            content = @Content(schema = @Schema(implementation = AuthenticationResponse.class))
-        ),
-        @ApiResponse(
-            responseCode = "400",
-            description = "Geçersiz istek (örn: email zaten kayıtlı)",
-            content = @Content(schema = @Schema(implementation = ApiError.class))
-        )
-    })
     @PostMapping("/register")
+    @Operation(summary = "Register a new user")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "User registered successfully"),
+        @ApiResponse(responseCode = "400", description = "Invalid input"),
+        @ApiResponse(responseCode = "409", description = "User already exists")
+    })
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody @Valid RegisterRequest request
+            @Valid @RequestBody RegisterRequest request
     ) {
-        return ResponseEntity.ok(authenticationService.register(request));
+        User user = User.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .email(request.getEmail())
+                .password(request.getPassword())
+                .role(request.getRole())
+                .build();
+
+        return ResponseEntity.ok(authenticationService.register(user));
     }
 
-    @Operation(
-        summary = "Kullanıcı girişi",
-        description = "Email ve şifre ile giriş yaparak JWT token alır"
-    )
-    @ApiResponses({
-        @ApiResponse(
-            responseCode = "200",
-            description = "Başarılı giriş",
-            content = @Content(schema = @Schema(implementation = AuthenticationResponse.class))
-        ),
-        @ApiResponse(
-            responseCode = "401",
-            description = "Geçersiz kimlik bilgileri",
-            content = @Content(schema = @Schema(implementation = ApiError.class))
-        )
-    })
     @PostMapping("/login")
-    public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody @Valid AuthenticationRequest request
+    @Operation(summary = "Authenticate a user")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Authentication successful"),
+        @ApiResponse(responseCode = "401", description = "Invalid credentials")
+    })
+    public ResponseEntity<AuthenticationResponse> login(
+            @Valid @RequestBody LoginRequest request
     ) {
-        return ResponseEntity.ok(authenticationService.authenticate(request));
+        return ResponseEntity.ok(authenticationService.authenticate(request.getEmail(), request.getPassword()));
     }
 
-    @Operation(
-        summary = "Token yenileme",
-        description = "Refresh token kullanarak yeni bir access token alır"
-    )
-    @ApiResponses({
-        @ApiResponse(
-            responseCode = "200",
-            description = "Token başarıyla yenilendi",
-            content = @Content(schema = @Schema(implementation = AuthenticationResponse.class))
-        ),
-        @ApiResponse(
-            responseCode = "401",
-            description = "Geçersiz refresh token",
-            content = @Content(schema = @Schema(implementation = ApiError.class))
-        )
-    })
     @PostMapping("/refresh-token")
+    @Operation(summary = "Refresh authentication token")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "Token refreshed successfully"),
+        @ApiResponse(responseCode = "401", description = "Invalid refresh token")
+    })
     public ResponseEntity<AuthenticationResponse> refreshToken(
-            @Parameter(description = "Bearer formatında refresh token")
-            @RequestHeader("Authorization") String refreshToken
+            @Parameter(description = "Refresh token", required = true)
+            @RequestHeader("Refresh-Token") String refreshToken
     ) {
         return ResponseEntity.ok(authenticationService.refreshToken(refreshToken));
     }

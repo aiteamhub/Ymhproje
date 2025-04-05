@@ -7,11 +7,10 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class EventPublisher {
+    private final ApplicationEventPublisher eventPublisher;
 
-    private final ApplicationEventPublisher publisher;
-
-    public void publishEvent(DomainEvent event) {
-        publisher.publishEvent(event);
+    public void publish(DomainEvent event) {
+        eventPublisher.publishEvent(event);
     }
 }
 

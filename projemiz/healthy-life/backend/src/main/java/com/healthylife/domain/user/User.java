@@ -1,23 +1,30 @@
 package com.healthylife.domain.user;
 
-import com.healthylife.domain.common.BaseEntity;
+import com.healthylife.domain.BaseEntity;
+import com.healthylife.domain.health.HealthProfile;
+import com.healthylife.domain.food.FoodHistory;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
+@Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class User extends BaseEntity implements UserDetails {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Column(nullable = false)
     private String firstName;
 
@@ -30,21 +37,22 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private UserRole role;
-
-    @Column(nullable = false)
-    private boolean enabled = true;
-
+    @Column(nullable = true)
     private String profilePictureUrl;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private HealthProfile healthProfile;
+
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<HealthProfile> healthProfiles;
+    private List<FoodHistory> foodHistory;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_" + role.name()));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.name()));
     }
 
     @Override
@@ -69,6 +77,11 @@ public class User extends BaseEntity implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return true;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
     }
 } 

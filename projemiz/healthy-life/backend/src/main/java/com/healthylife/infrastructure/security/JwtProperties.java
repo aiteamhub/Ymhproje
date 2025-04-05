@@ -1,22 +1,14 @@
 package com.healthylife.infrastructure.security;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@Getter
-@Setter
+@Data
 @Configuration
-@ConfigurationProperties(prefix = "security.jwt")
+@ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
     private String secretKey;
     private long expiration;
-    private RefreshToken refreshToken;
-
-    @Getter
-    @Setter
-    public static class RefreshToken {
-        private long expiration;
-    }
+    private long refreshToken;
 } 
