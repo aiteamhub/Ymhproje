@@ -1,7 +1,7 @@
 package com.healthylife.service;
 
 import com.healthylife.domain.user.User;
-import com.healthylife.repository.UserRepository;
+import com.healthylife.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

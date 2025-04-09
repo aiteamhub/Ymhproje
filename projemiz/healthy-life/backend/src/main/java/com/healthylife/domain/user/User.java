@@ -2,24 +2,24 @@ package com.healthylife.domain.user;
 
 import com.healthylife.domain.BaseEntity;
 import com.healthylife.domain.health.HealthProfile;
-import com.healthylife.domain.food.FoodHistory;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
-@Entity
-@Table(name = "users")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@Entity
+@Table(name = "users")
 public class User extends BaseEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,22 +37,16 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = true)
-    private String profilePictureUrl;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Role role;
+    private UserRole role;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private HealthProfile healthProfile;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<FoodHistory> foodHistory;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + role.name()));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
@@ -78,10 +72,5 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
     }
 } 

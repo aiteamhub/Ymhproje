@@ -2,14 +2,12 @@ package com.healthylife;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@EntityScan("com.healthylife.domain")
-@EnableJpaRepositories("com.healthylife.repository")
+@EnableScheduling
 public class HealthyLifeApplication {
     public static void main(String[] args) {
-        SpringApplication.run(HealthyLifeApplication.class, args);
+        SpringApplication.run(HealthylifeApplication.class, args);
     }
 } 
