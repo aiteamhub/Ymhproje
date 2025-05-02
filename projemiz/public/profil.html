@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - Sağlıklı Yaşam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+        .profile-header {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 50px 0;
+            margin-bottom: 30px;
+        }
+        .profile-card {
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-top: -75px;
+        }
+        .auth-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .stats-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Sağlıklı Yaşam</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#besin-takip">Besin Takip</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="analiz.html">Analiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="makaleler.html">Makaleler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="profil.html">Profil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profil Başlığı -->
+    <div class="profile-header text-center">
+        <div class="container">
+            <h1 class="display-4">Profil</h1>
+        </div>
+    </div>
+
+    <!-- Profil İçeriği -->
+    <div class="container">
+        <!-- Giriş Yapmamış Kullanıcı -->
+        <div id="authSection" class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card profile-card">
+                    <div class="card-body">
+                        <h3 class="text-center mb-4">Giriş Yap veya Üye Ol</h3>
+                        
+                        <!-- Giriş Formu -->
+                        <form id="loginForm" class="auth-form mb-4">
+                            <h4 class="text-center mb-3">Giriş Yap</h4>
+                            <div class="mb-3">
+                                <label for="loginEmail" class="form-label">E-posta</label>
+                                <input type="email" class="form-control" id="loginEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="loginPassword" class="form-label">Şifre</label>
+                                <input type="password" class="form-control" id="loginPassword" required>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Giriş Yap</button>
+                        </form>
+
+                        <!-- Üye Ol Formu -->
+                        <form id="registerForm" class="auth-form">
+                            <h4 class="text-center mb-3">Üye Ol</h4>
+                            <div class="mb-3">
+                                <label for="registerName" class="form-label">Ad Soyad</label>
+                                <input type="text" class="form-control" id="registerName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerEmail" class="form-label">E-posta</label>
+                                <input type="email" class="form-control" id="registerEmail" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerPassword" class="form-label">Şifre</label>
+                                <input type="password" class="form-control" id="registerPassword" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerHeight" class="form-label">Boy (cm)</label>
+                                <input type="number" class="form-control" id="registerHeight" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerWeight" class="form-label">Kilo (kg)</label>
+                                <input type="number" class="form-control" id="registerWeight" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerAge" class="form-label">Yaş</label>
+                                <input type="number" class="form-control" id="registerAge" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="registerGender" class="form-label">Cinsiyet</label>
+                                <select class="form-control" id="registerGender" required>
+                                    <option value="erkek">Erkek</option>
+                                    <option value="kadin">Kadın</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Üye Ol</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Giriş Yapmış Kullanıcı -->
+        <div id="profileSection" class="row" style="display: none;">
+            <div class="col-md-4">
+                <div class="card profile-card">
+                    <div class="card-body text-center">
+                        <img src="https://via.placeholder.com/150" alt="Profil Fotoğrafı" class="profile-image mb-3">
+                        <h3 id="userName">Kullanıcı Adı</h3>
+                        <p class="text-muted" id="userEmail">kullanici@email.com</p>
+                        <button class="btn btn-outline-success btn-sm" onclick="editProfile()">
+                            <i class="bi bi-pencil"></i> Profili Düzenle
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card profile-card">
+                    <div class="card-body">
+                        <h4 class="card-title">Kişisel Bilgiler</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="stats-card">
+                                    <h6>Boy</h6>
+                                    <h3 id="userHeight">175 cm</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stats-card">
+                                    <h6>Kilo</h6>
+                                    <h3 id="userWeight">70 kg</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stats-card">
+                                    <h6>Yaş</h6>
+                                    <h3 id="userAge">25</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-4">
+                                <div class="stats-card">
+                                    <h6>Vücut Kitle İndeksi</h6>
+                                    <h3 id="userBMI">22.9</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stats-card">
+                                    <h6>Günlük Kalori Hedefi</h6>
+                                    <h3 id="userCalorieGoal">2000 kcal</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stats-card">
+                                    <h6>Hedef Kilo</h6>
+                                    <h3 id="userTargetWeight">65 kg</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profil Düzenleme Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Profili Düzenle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">Ad Soyad</label>
+                            <input type="text" class="form-control" id="editName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editHeight" class="form-label">Boy (cm)</label>
+                            <input type="number" class="form-control" id="editHeight" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editWeight" class="form-label">Kilo (kg)</label>
+                            <input type="number" class="form-control" id="editWeight" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAge" class="form-label">Yaş</label>
+                            <input type="number" class="form-control" id="editAge" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editTargetWeight" class="form-label">Hedef Kilo (kg)</label>
+                            <input type="number" class="form-control" id="editTargetWeight" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editCalorieGoal" class="form-label">Günlük Kalori Hedefi</label>
+                            <input type="number" class="form-control" id="editCalorieGoal" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-success" onclick="saveProfile()">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Giriş formu işleme
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                if (response.ok) {
+                    const user = await response.json();
+                    localStorage.setItem('user', JSON.stringify(user));
+                    showProfileSection(user);
+                } else {
+                    throw new Error('Giriş başarısız');
+                }
+            } catch (error) {
+                alert('Giriş yapılırken bir hata oluştu: ' + error.message);
+            }
+        });
+
+        // Üye ol formu işleme
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const userData = {
+                name: document.getElementById('registerName').value,
+                email: document.getElementById('registerEmail').value,
+                password: document.getElementById('registerPassword').value,
+                height: document.getElementById('registerHeight').value,
+                weight: document.getElementById('registerWeight').value,
+                age: document.getElementById('registerAge').value,
+                gender: document.getElementById('registerGender').value
+            };
+
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                if (response.ok) {
+                    const user = await response.json();
+                    localStorage.setItem('user', JSON.stringify(user));
+                    showProfileSection(user);
+                } else {
+                    throw new Error('Kayıt başarısız');
+                }
+            } catch (error) {
+                alert('Kayıt olurken bir hata oluştu: ' + error.message);
+            }
+        });
+
+        // Profil bölümünü göster
+        function showProfileSection(user) {
+            document.getElementById('authSection').style.display = 'none';
+            document.getElementById('profileSection').style.display = 'block';
+            
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('userHeight').textContent = user.height + ' cm';
+            document.getElementById('userWeight').textContent = user.weight + ' kg';
+            document.getElementById('userAge').textContent = user.age;
+            document.getElementById('userBMI').textContent = calculateBMI(user.height, user.weight);
+            document.getElementById('userCalorieGoal').textContent = user.calorieGoal + ' kcal';
+            document.getElementById('userTargetWeight').textContent = user.targetWeight + ' kg';
+        }
+
+        // BMI hesaplama
+        function calculateBMI(height, weight) {
+            const heightInMeters = height / 100;
+            return (weight / (heightInMeters * heightInMeters)).toFixed(1);
+        }
+
+        // Profil düzenleme modalını aç
+        function editProfile() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            document.getElementById('editName').value = user.name;
+            document.getElementById('editHeight').value = user.height;
+            document.getElementById('editWeight').value = user.weight;
+            document.getElementById('editAge').value = user.age;
+            document.getElementById('editTargetWeight').value = user.targetWeight;
+            document.getElementById('editCalorieGoal').value = user.calorieGoal;
+            
+            const modal = new bootstrap.Modal(document.getElementById('editProfileModal'));
+            modal.show();
+        }
+
+        // Profil bilgilerini kaydet
+        async function saveProfile() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const updatedUser = {
+                ...user,
+                name: document.getElementById('editName').value,
+                height: document.getElementById('editHeight').value,
+                weight: document.getElementById('editWeight').value,
+                age: document.getElementById('editAge').value,
+                targetWeight: document.getElementById('editTargetWeight').value,
+                calorieGoal: document.getElementById('editCalorieGoal').value
+            };
+
+            try {
+                const response = await fetch('/api/auth/profile', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + user.token
+                    },
+                    body: JSON.stringify(updatedUser)
+                });
+
+                if (response.ok) {
+                    localStorage.setItem('user', JSON.stringify(updatedUser));
+                    showProfileSection(updatedUser);
+                    bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide();
+                } else {
+                    throw new Error('Profil güncellenemedi');
+                }
+            } catch (error) {
+                alert('Profil güncellenirken bir hata oluştu: ' + error.message);
+            }
+        }
+
+        // Sayfa yüklendiğinde kullanıcı durumunu kontrol et
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = localStorage.getItem('user');
+            if (user) {
+                showProfileSection(JSON.parse(user));
+            }
+        });
+    </script>
+</body>
+</html> 

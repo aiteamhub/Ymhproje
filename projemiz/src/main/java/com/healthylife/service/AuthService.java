@@ -1,82 +1,79 @@
 package com.healthylife.service;
 
+import com.healthylife.dto.AuthResponse;
 import com.healthylife.dto.LoginRequest;
-import com.healthylife.dto.SignupRequest;
+import com.healthylife.dto.RegisterRequest;
 import com.healthylife.model.User;
 import com.healthylife.repository.UserRepository;
-import com.healthylife.security.JwtUtils;
-import com.healthylife.security.UserDetailsImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.healthylife.security.JwtTokenProvider;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AuthService {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider tokenProvider;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    private JwtUtils jwtUtils;
-
-    public Map<String, Object> authenticateUser(LoginRequest loginRequest) {
-        Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword())
-        );
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateJwtToken(authentication);
-
-        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("token", jwt);
-        response.put("id", userDetails.getId());
-        response.put("username", userDetails.getUsername());
-        response.put("email", userDetails.getEmail());
-
-        return response;
+    public AuthService(AuthenticationManager authenticationManager,
+                      UserRepository userRepository,
+                      PasswordEncoder passwordEncoder,
+                      JwtTokenProvider tokenProvider) {
+        this.authenticationManager = authenticationManager;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.tokenProvider = tokenProvider;
     }
 
-    public Map<String, Object> registerUser(SignupRequest signUpRequest) {
-        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
-            throw new RuntimeException("Error: Username is already taken!");
+    @Transactional
+    public AuthResponse register(RegisterRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email is already in use");
         }
 
-        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
-            throw new RuntimeException("Error: Email is already in use!");
+        if (userRepository.existsByUsername(request.getUsername())) {
+            throw new RuntimeException("Username is already in use");
         }
 
-        User user = new User();
-        user.setUsername(signUpRequest.getUsername());
-        user.setEmail(signUpRequest.getEmail());
-        user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
-        user.setFirstName(signUpRequest.getFirstName());
-        user.setLastName(signUpRequest.getLastName());
-        user.setAge(signUpRequest.getAge());
-        user.setGender(signUpRequest.getGender());
-        user.setWeight(signUpRequest.getWeight());
-        user.setHeight(signUpRequest.getHeight());
+        User user = new User(request.getUsername(), request.getEmail(), passwordEncoder.encode(request.getPassword()));
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setAge(request.getAge());
+        user.setWeight(request.getWeight());
+        user.setHeight(request.getHeight());
+        user.setGender(request.getGender());
+        user.setHealthConditions(request.getHealthConditions());
 
         userRepository.save(user);
 
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setEmail(signUpRequest.getEmail());
-        loginRequest.setPassword(signUpRequest.getPassword());
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+        );
 
-        return authenticateUser(loginRequest);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = tokenProvider.generateToken(authentication);
+
+        return new AuthResponse(token, user.getEmail(), user.getUsername());
+    }
+
+    public AuthResponse login(LoginRequest request) {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = tokenProvider.generateToken(authentication);
+
+        User user = userRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        return new AuthResponse(token, user.getEmail(), user.getUsername());
     }
 } 

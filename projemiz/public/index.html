@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlıklı Yaşam - Besin Takip ve Analiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            margin-bottom: 30px;
+        }
+        .feature-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .action-buttons {
+            margin-top: 20px;
+        }
+        .nutrition-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sağlıklı Yaşam</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#besin-takip">Besin Takip</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="analiz.html">Analiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="makaleler.html">Makaleler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.html">Profil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4">Sağlıklı Yaşam Rehberiniz</h1>
+            <p class="lead">Besinlerinizi takip edin, analiz edin ve sağlıklı yaşam için bilgilenin</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="container">
+        <div class="row">
+            <!-- Besin Takip Kartı -->
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Besin Takip</h5>
+                        <p class="card-text">Günlük tükettiğiniz besinleri kaydedin ve takip edin.</p>
+                        <a href="#besin-takip" class="btn btn-success">Başla</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Analiz Kartı -->
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Besin Analizi</h5>
+                        <p class="card-text">Tükettiğiniz besinlerin detaylı analizini görün.</p>
+                        <a href="analiz.html" class="btn btn-success">Analiz Et</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Makaleler Kartı -->
+            <div class="col-md-4">
+                <div class="card feature-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Sağlıklı Yaşam Makaleleri</h5>
+                        <p class="card-text">Uzman yazıları ile sağlıklı yaşam hakkında bilgilenin.</p>
+                        <a href="makaleler.html" class="btn btn-success">Oku</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Besin Takip Formu -->
+    <section id="besin-takip" class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Besin Takip</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <form id="foodForm">
+                            <div class="mb-3">
+                                <label for="foodName" class="form-label">Besin Adı</label>
+                                <input type="text" class="form-control" id="foodName" required>
+                                <div id="foodSearchResults" class="list-group mt-2" style="display: none;"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="quantity" class="form-label">Miktar (gram)</label>
+                                <input type="number" class="form-control" id="quantity" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mealTime" class="form-label">Öğün Zamanı</label>
+                                <select class="form-control" id="mealTime" required>
+                                    <option value="Kahvaltı">Kahvaltı</option>
+                                    <option value="Öğle Yemeği">Öğle Yemeği</option>
+                                    <option value="Akşam Yemeği">Akşam Yemeği</option>
+                                    <option value="Ara Öğün">Ara Öğün</option>
+                                </select>
+                            </div>
+                            <div class="action-buttons">
+                                <button type="submit" class="btn btn-success">Kaydet</button>
+                                <a href="analiz.html" class="btn btn-outline-success ms-2">Analiz Et</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="nutritionInfo" class="mt-4" style="display: none;">
+                    <h5>Besin Bilgileri</h5>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="nutrition-card">
+                                <h6>Kalori</h6>
+                                <h3 class="text-success" id="foodCalories">0</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="nutrition-card">
+                                <h6>Protein</h6>
+                                <h3 class="text-success" id="foodProtein">0g</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="nutrition-card">
+                                <h6>Karbonhidrat</h6>
+                                <h3 class="text-success" id="foodCarbs">0g</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="nutrition-card">
+                                <h6>Yağ</h6>
+                                <h3 class="text-success" id="foodFat">0g</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="foodList" class="mt-4">
+                    <h5>Son Eklenen Besinler</h5>
+                    <div class="list-group" id="recentFoods">
+                        <!-- Besinler buraya dinamik olarak eklenecek -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Makaleler Bölümü -->
+    <section id="makaleler" class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h2 class="mb-0">Son Makaleler</h2>
+            </div>
+            <div class="card-body">
+                <div class="row" id="latestArticles">
+                    <!-- Son makaleler buraya dinamik olarak eklenecek -->
+                </div>
+                <div class="text-center mt-4">
+                    <a href="makaleler.html" class="btn btn-success btn-lg">
+                        <i class="bi bi-book"></i> Tüm Makaleleri Gör
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Makale Detay Modal -->
+    <div class="modal fade" id="articleModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="articleModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="article-detail">
+                        <img id="articleModalImage" class="img-fluid rounded" src="" alt="">
+                        <div class="author-info">
+                            <p class="mb-0"><strong>Yazar:</strong> <span id="articleModalAuthor"></span></p>
+                            <p class="mb-0"><strong>Tarih:</strong> <span id="articleModalDate"></span></p>
+                            <p class="mb-0"><strong>Kategori:</strong> <span id="articleModalCategory"></span></p>
+                        </div>
+                        <div id="articleModalContent" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Besin arama işlevi
+        const foodNameInput = document.getElementById('foodName');
+        const searchResults = document.getElementById('foodSearchResults');
+        const nutritionInfo = document.getElementById('nutritionInfo');
+        let selectedFood = null;
+
+        foodNameInput.addEventListener('input', async function() {
+            const query = this.value;
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+
+            try {
+                const response = await fetch(`/api/food/search?query=${encodeURIComponent(query)}`);
+                const results = await response.json();
+                
+                searchResults.innerHTML = '';
+                results.forEach(food => {
+                    const item = document.createElement('button');
+                    item.type = 'button';
+                    item.className = 'list-group-item list-group-item-action';
+                    item.textContent = food.name;
+                    item.addEventListener('click', () => selectFood(food));
+                    searchResults.appendChild(item);
+                });
+                
+                searchResults.style.display = results.length ? 'block' : 'none';
+            } catch (error) {
+                console.error('Besin arama hatası:', error);
+            }
+        });
+
+        function selectFood(food) {
+            selectedFood = food;
+            foodNameInput.value = food.name;
+            searchResults.style.display = 'none';
+            updateNutritionInfo(food);
+        }
+
+        function updateNutritionInfo(food) {
+            const quantity = document.getElementById('quantity').value || 100;
+            const scale = quantity / 100;
+
+            document.getElementById('foodCalories').textContent = Math.round(food.calories * scale);
+            document.getElementById('foodProtein').textContent = (food.protein * scale).toFixed(1) + 'g';
+            document.getElementById('foodCarbs').textContent = (food.carbs * scale).toFixed(1) + 'g';
+            document.getElementById('foodFat').textContent = (food.fat * scale).toFixed(1) + 'g';
+            nutritionInfo.style.display = 'block';
+        }
+
+        // Miktar değiştiğinde besin bilgilerini güncelle
+        document.getElementById('quantity').addEventListener('input', function() {
+            if (selectedFood) {
+                updateNutritionInfo(selectedFood);
+            }
+        });
+
+        // Besin formu işleme
+        document.getElementById('foodForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (!selectedFood) {
+                showErrorMessage('Lütfen geçerli bir besin seçin');
+                return;
+            }
+
+            const foodData = {
+                foodName: selectedFood.name,
+                quantity: document.getElementById('quantity').value,
+                mealTime: document.getElementById('mealTime').value
+            };
+
+            try {
+                const response = await fetch('/api/food', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(foodData)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    showSuccessMessage('Besin başarıyla kaydedildi!');
+                    loadRecentFoods();
+                    this.reset();
+                    nutritionInfo.style.display = 'none';
+                    selectedFood = null;
+                } else {
+                    const error = await response.json();
+                    throw new Error(error.error || 'Besin kaydedilemedi');
+                }
+            } catch (error) {
+                showErrorMessage('Bir hata oluştu: ' + error.message);
+            }
+        });
+
+        // Son eklenen besinleri yükle
+        async function loadRecentFoods() {
+            try {
+                const response = await fetch('/api/food');
+                const foods = await response.json();
+                const recentFoodsContainer = document.getElementById('recentFoods');
+                recentFoodsContainer.innerHTML = '';
+
+                foods.slice(-5).reverse().forEach(food => {
+                    const foodItem = document.createElement('div');
+                    foodItem.className = 'list-group-item';
+                    foodItem.innerHTML = `
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="mb-1">${food.foodName}</h6>
+                                <small class="text-muted">${food.quantity}g - ${food.mealTime}</small>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted">${new Date(food.date).toLocaleTimeString()}</small>
+                                <div>
+                                    <small class="text-success">${food.analysis.calories} kcal</small>
+                                    <small class="text-primary">${food.analysis.protein}g protein</small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    recentFoodsContainer.appendChild(foodItem);
+                });
+            } catch (error) {
+                console.error('Besinler yüklenirken hata oluştu:', error);
+            }
+        }
+
+        // Başarı mesajı gösterme
+        function showSuccessMessage(message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-success alert-dismissible fade show mt-3';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.getElementById('foodForm').appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+
+        // Hata mesajı gösterme
+        function showErrorMessage(message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-danger alert-dismissible fade show mt-3';
+            alertDiv.innerHTML = `
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.getElementById('foodForm').appendChild(alertDiv);
+            setTimeout(() => alertDiv.remove(), 3000);
+        }
+
+        // Sayfa yüklendiğinde son besinleri yükle
+        document.addEventListener('DOMContentLoaded', loadRecentFoods);
+
+        // Son makaleleri yükle
+        async function loadLatestArticles() {
+            try {
+                const response = await fetch('/api/articles');
+                const articles = await response.json();
+                const latestArticles = articles.slice(0, 3); // Son 3 makale
+                
+                const articlesContainer = document.getElementById('latestArticles');
+                articlesContainer.innerHTML = '';
+                
+                latestArticles.forEach(article => {
+                    const articleCard = document.createElement('div');
+                    articleCard.className = 'col-md-4';
+                    articleCard.innerHTML = `
+                        <div class="card article-card">
+                            <img src="${article.image}" class="card-img-top article-image" alt="${article.title}">
+                            <span class="badge bg-success category-badge">${article.category}</span>
+                            <div class="card-body">
+                                <h5 class="card-title">${article.title}</h5>
+                                <p class="card-text article-content">${article.content.substring(0, 100)}...</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small class="text-muted">${article.author}</small>
+                                    <button class="btn btn-success btn-sm" onclick="showArticleDetail(${article.id})">
+                                        Devamını Oku
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    articlesContainer.appendChild(articleCard);
+                });
+            } catch (error) {
+                console.error('Makaleler yüklenirken hata oluştu:', error);
+            }
+        }
+
+        // Sayfa yüklendiğinde son makaleleri yükle
+        document.addEventListener('DOMContentLoaded', loadLatestArticles);
+
+        // Makale detayını göster
+        function showArticleDetail(articleId) {
+            const article = articles.find(a => a.id === articleId);
+            if (article) {
+                const modal = new bootstrap.Modal(document.getElementById('articleModal'));
+                document.getElementById('articleModalTitle').textContent = article.title;
+                document.getElementById('articleModalImage').src = article.image;
+                document.getElementById('articleModalAuthor').textContent = article.author;
+                document.getElementById('articleModalDate').textContent = article.date;
+                document.getElementById('articleModalCategory').textContent = article.category;
+                document.getElementById('articleModalContent').innerHTML = article.content.replace(/\n/g, '<br>');
+                modal.show();
+            }
+        }
+    </script>
+</body>
+</html> 

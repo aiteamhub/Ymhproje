@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Besin Analizi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .nutrition-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .nutrition-card h3 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        .nutrition-card p {
+            margin-bottom: 0;
+            font-size: 1.2rem;
+        }
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-bottom: 30px;
+        }
+        .time-filter {
+            margin-bottom: 20px;
+        }
+        .progress {
+            height: 25px;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            font-size: 14px;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Sağlıklı Yaşam</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#besin-takip">Besin Takip</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="analiz.html">Analiz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="makaleler.html">Makaleler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#profil">Profil</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Besin Analizi</h1>
+
+        <!-- Zaman Filtresi -->
+        <div class="time-filter text-center">
+            <button class="btn btn-outline-success me-2" onclick="loadAnalysis('daily')">Günlük</button>
+            <button class="btn btn-outline-success me-2" onclick="loadAnalysis('weekly')">Haftalık</button>
+            <button class="btn btn-outline-success" onclick="loadAnalysis('monthly')">Aylık</button>
+        </div>
+
+        <!-- Özet Kartları -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="nutrition-card">
+                    <h3>Toplam Kalori</h3>
+                    <p id="totalCalories">0 kcal</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="nutrition-card">
+                    <h3>Protein</h3>
+                    <p id="totalProtein">0g</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="nutrition-card">
+                    <h3>Karbonhidrat</h3>
+                    <p id="totalCarbs">0g</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="nutrition-card">
+                    <h3>Yağ</h3>
+                    <p id="totalFat">0g</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kalori Hedefi -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Günlük Kalori Hedefi</h5>
+                <div class="progress">
+                    <div id="calorieProgress" class="progress-bar bg-success" role="progressbar" style="width: 0%">0%</div>
+                </div>
+                <p class="mt-2">Hedef: <span id="calorieTarget">2000</span> kcal</p>
+            </div>
+        </div>
+
+        <!-- Grafikler -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Öğün Bazlı Kalori Dağılımı</h5>
+                        <div class="chart-container">
+                            <canvas id="mealChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Besin Gruplarına Göre Dağılım</h5>
+                        <div class="chart-container">
+                            <canvas id="groupChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Besin Listesi -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Tüketilen Besinler</h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Tarih</th>
+                                <th>Besin</th>
+                                <th>Miktar</th>
+                                <th>Öğün</th>
+                                <th>Kalori</th>
+                                <th>Protein</th>
+                                <th>Karbonhidrat</th>
+                                <th>Yağ</th>
+                            </tr>
+                        </thead>
+                        <tbody id="foodList">
+                            <!-- Besinler buraya dinamik olarak eklenecek -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let mealChart, groupChart;
+        let currentTimeRange = 'daily';
+
+        // Analiz verilerini yükle
+        async function loadAnalysis(timeRange) {
+            currentTimeRange = timeRange;
+            try {
+                const response = await fetch(`/api/analysis?timeRange=${timeRange}`);
+                const data = await response.json();
+                updateSummary(data.summary);
+                updateCharts(data.mealAnalysis, data.groupAnalysis);
+                updateFoodList(data.foodEntries);
+            } catch (error) {
+                console.error('Analiz yüklenirken hata oluştu:', error);
+            }
+        }
+
+        // Özet bilgileri güncelle
+        function updateSummary(summary) {
+            document.getElementById('totalCalories').textContent = `${summary.calories} kcal`;
+            document.getElementById('totalProtein').textContent = `${summary.protein}g`;
+            document.getElementById('totalCarbs').textContent = `${summary.carbs}g`;
+            document.getElementById('totalFat').textContent = `${summary.fat}g`;
+
+            // Kalori hedefi ilerlemesi
+            const target = parseInt(document.getElementById('calorieTarget').textContent);
+            const progress = (summary.calories / target) * 100;
+            const progressBar = document.getElementById('calorieProgress');
+            progressBar.style.width = `${Math.min(progress, 100)}%`;
+            progressBar.textContent = `${Math.round(Math.min(progress, 100))}%`;
+        }
+
+        // Grafikleri güncelle
+        function updateCharts(mealAnalysis, groupAnalysis) {
+            // Öğün bazlı grafik
+            if (mealChart) {
+                mealChart.destroy();
+            }
+            const mealCtx = document.getElementById('mealChart').getContext('2d');
+            mealChart = new Chart(mealCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(mealAnalysis),
+                    datasets: [{
+                        label: 'Kalori',
+                        data: Object.values(mealAnalysis).map(m => m.calories),
+                        backgroundColor: 'rgba(40, 167, 69, 0.5)',
+                        borderColor: 'rgba(40, 167, 69, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Grup bazlı grafik
+            if (groupChart) {
+                groupChart.destroy();
+            }
+            const groupCtx = document.getElementById('groupChart').getContext('2d');
+            groupChart = new Chart(groupCtx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(groupAnalysis),
+                    datasets: [{
+                        data: Object.values(groupAnalysis).map(g => g.calories),
+                        backgroundColor: [
+                            'rgba(40, 167, 69, 0.5)',
+                            'rgba(54, 162, 235, 0.5)',
+                            'rgba(255, 206, 86, 0.5)',
+                            'rgba(75, 192, 192, 0.5)',
+                            'rgba(153, 102, 255, 0.5)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        // Besin listesini güncelle
+        function updateFoodList(foodEntries) {
+            const tbody = document.getElementById('foodList');
+            tbody.innerHTML = '';
+
+            foodEntries.forEach(entry => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${new Date(entry.date).toLocaleDateString()}</td>
+                    <td>${entry.foodName}</td>
+                    <td>${entry.quantity}g</td>
+                    <td>${entry.mealTime}</td>
+                    <td>${entry.analysis.calories} kcal</td>
+                    <td>${entry.analysis.protein}g</td>
+                    <td>${entry.analysis.carbs}g</td>
+                    <td>${entry.analysis.fat}g</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Sayfa yüklendiğinde günlük analizi yükle
+        document.addEventListener('DOMContentLoaded', () => loadAnalysis('daily'));
+    </script>
+</body>
+</html> 

@@ -1,0 +1,113 @@
+/* Makale Kartları */
+.article-card {
+    transition: transform 0.3s;
+    margin-bottom: 20px;
+    height: 100%;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.article-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.category-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.article-content {
+    max-height: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Makale Detay */
+.article-detail {
+    margin-top: 30px;
+}
+
+.article-detail img {
+    max-height: 400px;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.author-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Arama ve Filtreleme */
+.search-box {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.search-box input {
+    padding-right: 40px;
+    border-radius: 20px;
+}
+
+.search-box i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+}
+
+.category-filter {
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+.category-btn.active {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 768px) {
+    .article-card {
+        margin-bottom: 15px;
+    }
+    
+    .article-image {
+        height: 150px;
+    }
+    
+    .category-filter {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 10px;
+    }
+    
+    .category-btn {
+        display: inline-block;
+        margin-right: 5px;
+    }
+} 
