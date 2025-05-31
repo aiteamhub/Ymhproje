@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim - Sağlıklı Yaşam</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* İletişim Sayfası için Koyu Tema Özel Stilleri */
+        body {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .container {
+            color: #FFFFFF;
+        }
+        
+        .contact-section, 
+        .map-section, 
+        .faq-section, 
+        .newsletter-section {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .contact-info, 
+        .contact-form-container, 
+        .faq-item, 
+        .newsletter-form {
+            background-color: #1E1E1E;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+        }
+        
+        .section-title,
+        .contact-info h3,
+        .faq-question {
+            color: #5CDB95;
+        }
+        
+        .contact-info-item i,
+        .faq-icon {
+            color: #5CDB95;
+        }
+        
+        input, textarea, select {
+            background-color: #353535;
+            border: 1px solid #444444;
+            color: #FFFFFF;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: #5CDB95;
+            box-shadow: 0 0 0 3px rgba(92, 219, 149, 0.2);
+        }
+        
+        /* Hero bölümü için arka plan resmi */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        /* İletişim kartının görsel iyileştirmeleri */
+        .contact-info-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(92, 219, 149, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon i {
+            font-size: 20px;
+            color: #5CDB95;
+        }
+        
+        /* SSS Görsel İyileştirmeleri */
+        .faq-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: rgba(92, 219, 149, 0.1);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-right: 15px;
+        }
+        
+        /* Takım Üyeleri */
+        .team-section {
+            padding: 60px 0;
+            background-color: #121212;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background-color: #1E1E1E;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-image {
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+        
+        .member-info {
+            padding: 20px;
+        }
+        
+        .member-info h3 {
+            color: #5CDB95;
+            margin-bottom: 5px;
+        }
+        
+        .member-position {
+            color: #AAAAAA;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .member-bio {
+            font-size: 0.95em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        
+        .member-social {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .member-social a {
+            color: #777;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        
+        .member-social a:hover {
+            color: #5CDB95;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                    <li><a href="egzersiz.html">Egzersiz</a></li>
+                    <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                    <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                    <li><a href="iletisim.html" class="active">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>İletişim</h2>
+            <p>Sorularınız, önerileriniz veya işbirliği teklifleriniz için bizimle iletişime geçebilirsiniz.</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Bize Ulaşın</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>İletişim Bilgileri</h3>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Adres</h4>
+                            <p>Aziz Sancar Caddesi No:4, Üniversite Mahallesi, Elazığ</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Telefon</h4>
+                            <p>+90 212 345 67 89</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>E-posta</h4>
+                            <p>iletisim@saglikli-yasam.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Çalışma Saatleri</h4>
+                            <p>Pazartesi - Cuma: 09:00 - 18:00</p>
+                            <p>Cumartesi: 10:00 - 14:00</p>
+                            <p>Pazar: Kapalı</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-media">
+                        <h4>Sosyal Medya</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <h3>İletişim Formu</h3>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Ad Soyad</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-posta</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Konu</label>
+                            <select id="subject" name="subject">
+                                <option value="general">Genel Bilgi</option>
+                                <option value="collaboration">İşbirliği Teklifi</option>
+                                <option value="feedback">Öneri/Geri Bildirim</option>
+                                <option value="other">Diğer</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mesajınız</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <h2 class="section-title">Konumumuz</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d192698.6130434789!2d28.8719!3d41.0053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1627388721096!5m2!1str!2str" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Ekibimiz</h2>
+            <p class="section-description">Sağlıklı yaşam konusunda uzman ekibimizle tanışın.</p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="PROF.DR. Hüseyin GÜNGÖR">
+                    </div>
+                    <div class="member-info">
+                        <h3>PROF.DR. Hüseyin GÜNGÖR</h3>
+                        <div class="member-position">Her bokolog</div>
+                        <p class="member-bio">20 yıllık hayat tecrübesiyle beslenme ve diyet konularında uzmanlaşmış,gençliğinde arada halı saha maçı yapmış sağlıklı yaşam üzerine çeşitli makaleleri ve bir kitabı bulunmaktadır.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Mehmet Demir">
+                    </div>
+                    <div class="member-info">
+                        <h3>Mehmet Demir</h3>
+                        <div class="member-position">Fitness Eğitmeni</div>
+                        <p class="member-bio">NASM sertifikalı fitness eğitmeni, özel antrenörlük ve grup dersleri ile 8 yıldan fazla sektör deneyimi bulunmaktadır.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Zeynep Kaya">
+                    </div>
+                    <div class="member-info">
+                        <h3>Zeynep Kaya</h3>
+                        <div class="member-position">Psikolojik Danışman</div>
+                        <p class="member-bio">Klinik psikoloji alanında yüksek lisans derecesine sahip, zihinsel sağlık ve stres yönetimi konularında uzman.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Sıkça Sorulan Sorular</h2>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Sağlıklı Yaşam web sitesi kimler tarafından hazırlanmıştır?</h3>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sağlıklı Yaşam web sitesi, beslenme, egzersiz ve zihinsel sağlık konularında uzman bir ekip tarafından hazırlanmıştır. Sitedeki bilgiler, güncel bilimsel araştırmalara ve uzman görüşlerine dayanmaktadır.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Sitedeki beslenme ve egzersiz önerileri herkes için uygun mudur?</h3>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sitemizdeki bilgiler genel bilgi amaçlıdır ve kişisel sağlık durumunuza, yaşınıza, cinsiyetinize veya özel sağlık koşullarınıza göre değişiklik gösterebilir. Yeni bir beslenme planı veya egzersiz programı başlamadan önce bir sağlık uzmanına danışmanızı öneririz.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Hesaplayıcılar sayfasındaki sonuçlar ne kadar doğrudur?</h3>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Hesaplayıcılar sayfasındaki araçlar, genel formüller ve standart değerler kullanılarak hazırlanmıştır. Sonuçlar yaklaşık değerlerdir ve genel bir fikir vermek içindir. Kesin değerler için profesyonel sağlık ölçümleri yapılması gereklidir.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>İçerikle ilgili öneri veya düzeltme göndermek istiyorum, nasıl yapabilirim?</h3>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>İçerikle ilgili öneri, düzeltme veya geri bildirimlerinizi iletişim formu aracılığıyla gönderebilirsiniz. Geri bildirimleriniz ekibimiz tarafından değerlendirilecek ve uygun görülmesi halinde içeriklerimize yansıtılacaktır.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <div class="faq-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <h3>Site güncel bilgilerle yenileniyor mu?</h3>
+                        <i class="fas fa-chevron-down faq-arrow"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Evet, sitemiz düzenli olarak güncellenmektedir. Sağlık, beslenme ve fitness alanındaki son gelişmeler ve bilimsel araştırmalar doğrultusunda içeriğimizi sürekli olarak gözden geçiriyor ve güncelliyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container">
+            <h2 class="section-title">Bültenimize Abone Olun</h2>
+            <p>En güncel sağlıklı yaşam bilgileri, özel içerikler ve etkinlik duyuruları için e-posta listemize katılın.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="E-posta adresiniz" required>
+                <button type="submit" class="btn">Abone Ol</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h3>
+                    <p>Sağlıklı bir yaşam için ihtiyacınız olan her şey.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                        <li><a href="egzersiz.html">Egzersiz</a></li>
+                        <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                        <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                        <li><a href="iletisim.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sağlıklı Yaşam. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // İletişim sayfası için özel JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // SSS Akordiyon işlevselliği
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // Tıklanan sorunun cevap bölümünü al
+                    const answer = this.nextElementSibling;
+                    
+                    // Cevabın görünürlüğünü değiştir
+                    if (answer.style.maxHeight) {
+                        answer.style.maxHeight = null;
+                        this.classList.remove('active');
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + "px";
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // İletişim formu gönderim işlemi
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Normalde burada form verilerini işleyecek AJAX kodu olacak
+                    alert('Form başarıyla gönderildi! Teşekkür ederiz.');
+                    this.reset();
+                });
+            }
+            
+            // Bülten abonelik formu
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Normalde burada abonelik işlemini gerçekleştirecek kod olacak
+                    alert('Bültenimize başarıyla abone oldunuz! Teşekkür ederiz.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

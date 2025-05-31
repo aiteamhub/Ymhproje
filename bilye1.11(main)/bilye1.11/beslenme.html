@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlıklı Beslenme - Sağlıklı Yaşam</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Beslenme Sayfası için Koyu Tema Özel Stilleri */
+        body {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .container {
+            color: #FFFFFF;
+        }
+        
+        .nutrition-principles, 
+        .food-groups, 
+        .meal-plans, 
+        .nutrition-tips {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .nutrition-card, 
+        .tab-container, 
+        .meal, 
+        .tip-card {
+            background-color: #1E1E1E;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+        }
+        
+        .section-title,
+        .nutrition-card h3,
+        .tab-pane h3,
+        .meal h3,
+        .tip-card h3 {
+            color: #5CDB95;
+        }
+        
+        .card-icon,
+        .food-list li i,
+        .meal ul li::before {
+            color: #5CDB95;
+        }
+        
+        .tab-btn {
+            background-color: #2D2D2D;
+            color: #FFFFFF;
+        }
+        
+        .tab-btn.active {
+            background-color: #1E1E1E;
+            color: #5CDB95;
+        }
+        
+        .tabs {
+            background-color: #2D2D2D;
+        }
+        
+        .tab-content {
+            background-color: #1E1E1E;
+        }
+        
+        .note, 
+        .tip-number {
+            background-color: rgba(92, 219, 149, 0.1);
+            color: #FFFFFF;
+        }
+        
+        /* Beslenme Sayfası Hero görüntüsü */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1607532941433-304659e8198a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1078&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Beslenme kartlarına resim ekleme */
+        .nutrition-card {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 40px;
+        }
+        
+        .nutrition-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        /* Tab panellerine resim */
+        .tab-pane {
+            display: none;
+            position: relative;
+        }
+        
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .tab-pane-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        /* Yemek planı resimleri */
+        .meal {
+            position: relative;
+        }
+        
+        .meal-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: 3px solid #5CDB95;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="beslenme.html" class="active">Sağlıklı Beslenme</a></li>
+                    <li><a href="egzersiz.html">Egzersiz</a></li>
+                    <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                    <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Sağlıklı Beslenme</h2>
+            <p>Dengeli ve doğru beslenme, sağlıklı bir yaşamın temel taşlarından biridir.</p>
+        </div>
+    </section>
+
+    <section class="nutrition-principles">
+        <div class="container">
+            <h2 class="section-title">Sağlıklı Beslenmenin Temel İlkeleri</h2>
+            
+            <div class="nutrition-grid">
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Dengeli Beslenme</h3>
+                    <p>Sağlıklı beslenmenin temeli, vücudunuzun ihtiyaç duyduğu besin gruplarını dengeli bir şekilde tüketmektir. Her öğünde protein, karbonhidrat, sağlıklı yağlar, vitamin ve mineralleri içeren besinlere yer verin.</p>
+                    <img src="https://images.unsplash.com/photo-1606756790138-261d2b21cd75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dengeli Beslenme">
+                </div>
+                
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Sebze ve Meyve Tüketimi</h3>
+                    <p>Günde en az 5 porsiyon sebze ve meyve tüketmeye çalışın. Farklı renklerde sebze ve meyveler, farklı vitaminler ve antioksidanlar sağlar. Bu besinler lif açısından zengin olup, tokluk hissi verirler.</p>
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sebze ve Meyveler">
+                </div>
+                
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Su Tüketimi</h3>
+                    <p>Günde ortalama 2-2.5 litre su içmeyi hedefleyin. Su, vücudun tüm fonksiyonları için gereklidir ve toksinlerin atılmasına yardımcı olur. Susama hissi oluşmadan önce su içmeyi alışkanlık haline getirin.</p>
+                    <img src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Su Tüketimi">
+                </div>
+                
+                <div class="nutrition-card">
+                    <div class="card-icon">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <h3>İşlenmiş Gıdalardan Kaçının</h3>
+                    <p>Paketlenmiş, işlenmiş ve şeker oranı yüksek gıdaları mümkün olduğunca sınırlandırın. Bu tür gıdalar genellikle boş kalori içerir ve sağlığa zararlı olabilir.</p>
+                    <img src="https://images.unsplash.com/photo-1621939514649-280e2ee25f60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="İşlenmiş Gıdalar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="food-groups">
+        <div class="container">
+            <h2 class="section-title">Temel Besin Grupları</h2>
+            
+            <div class="tab-container">
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="proteins">Proteinler</button>
+                    <button class="tab-btn" data-target="carbs">Karbonhidratlar</button>
+                    <button class="tab-btn" data-target="fats">Sağlıklı Yağlar</button>
+                    <button class="tab-btn" data-target="vitamins">Vitamin ve Mineraller</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="proteins" class="tab-pane active">
+                        <h3>Protein Kaynakları</h3>
+                        <p>Proteinler, vücudumuzun yapı taşlarıdır. Kas yapımı, hormonal denge ve bağışıklık sistemi için hayati önem taşırlar.</p>
+                        <img src="https://images.unsplash.com/photo-1432139555190-58524dae6a55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1176&q=80" alt="Protein Kaynakları" class="tab-pane-img">
+                        <ul class="food-list">
+                            <li><i class="fas fa-check"></i> Yumurta</li>
+                            <li><i class="fas fa-check"></i> Tavuk ve hindi eti</li>
+                            <li><i class="fas fa-check"></i> Balık (özellikle yağlı balıklar)</li>
+                            <li><i class="fas fa-check"></i> Kırmızı et (haftada 1-2 kez)</li>
+                            <li><i class="fas fa-check"></i> Baklagiller (mercimek, nohut, fasulye)</li>
+                            <li><i class="fas fa-check"></i> Yoğurt ve peynir</li>
+                            <li><i class="fas fa-check"></i> Tofu ve diğer bitkisel protein kaynakları</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="carbs" class="tab-pane">
+                        <h3>Karbonhidrat Kaynakları</h3>
+                        <p>Karbonhidratlar, vücudumuzun ana enerji kaynağıdır. Doğru seçimler yapmak önemlidir.</p>
+                        <img src="https://images.unsplash.com/photo-1590779033100-9f60a05a013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Karbonhidrat Kaynakları" class="tab-pane-img">
+                        <ul class="food-list">
+                            <li><i class="fas fa-check"></i> Tam tahıllı ekmek ve makarna</li>
+                            <li><i class="fas fa-check"></i> Kahverengi pirinç</li>
+                            <li><i class="fas fa-check"></i> Yulaf</li>
+                            <li><i class="fas fa-check"></i> Kinoa</li>
+                            <li><i class="fas fa-check"></i> Patates</li>
+                            <li><i class="fas fa-check"></i> Tatlı patates</li>
+                            <li><i class="fas fa-check"></i> Meyve</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="fats" class="tab-pane">
+                        <h3>Sağlıklı Yağ Kaynakları</h3>
+                        <p>Sağlıklı yağlar, beyin sağlığı, hormon üretimi ve hücre zarlarının bütünlüğü için gereklidir.</p>
+                        <img src="https://images.unsplash.com/photo-1519411792752-25c2468cccb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Sağlıklı Yağlar" class="tab-pane-img">
+                        <ul class="food-list">
+                            <li><i class="fas fa-check"></i> Zeytinyağı</li>
+                            <li><i class="fas fa-check"></i> Avokado</li>
+                            <li><i class="fas fa-check"></i> Fındık, badem, ceviz</li>
+                            <li><i class="fas fa-check"></i> Chia ve keten tohumu</li>
+                            <li><i class="fas fa-check"></i> Yağlı balıklar (somon, uskumru)</li>
+                            <li><i class="fas fa-check"></i> Hindistan cevizi yağı (az miktarda)</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="vitamins" class="tab-pane">
+                        <h3>Vitamin ve Mineral Kaynakları</h3>
+                        <p>Vitamin ve mineraller, vücudun sağlıklı çalışması için gereken mikro besinlerdir.</p>
+                        <img src="https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1185&q=80" alt="Vitamin ve Mineraller" class="tab-pane-img">
+                        <ul class="food-list">
+                            <li><i class="fas fa-check"></i> Koyu yeşil yapraklı sebzeler (ıspanak, kale)</li>
+                            <li><i class="fas fa-check"></i> Turuncu sebze ve meyveler (havuç, tatlı patates, portakal)</li>
+                            <li><i class="fas fa-check"></i> Kırmızı meyveler (çilek, kiraz, kırmızı üzüm)</li>
+                            <li><i class="fas fa-check"></i> Sarımsak ve soğan</li>
+                            <li><i class="fas fa-check"></i> Baharatlar (zerdeçal, tarçın, zencefil)</li>
+                            <li><i class="fas fa-check"></i> Fermente gıdalar (kefir, turşu)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="meal-plans">
+        <div class="container">
+            <h2 class="section-title">Örnek Günlük Beslenme Planı</h2>
+            
+            <div class="meal-plan-container">
+                <div class="meal">
+                    <h3><i class="fas fa-sun"></i> Kahvaltı</h3>
+                    <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kahvaltı" class="meal-img">
+                    <ul>
+                        <li>1 porsiyon yulaf ezmesi (süt veya yoğurt ile)</li>
+                        <li>1 avuç karışık kuru yemiş</li>
+                        <li>1 adet orta boy meyve</li>
+                        <li>1 fincan yeşil çay</li>
+                    </ul>
+                </div>
+                
+                <div class="meal">
+                    <h3><i class="fas fa-coffee"></i> Ara Öğün</h3>
+                    <img src="https://images.unsplash.com/photo-1596591868231-07947a3815a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ara Öğün" class="meal-img">
+                    <ul>
+                        <li>1 adet meyve veya 1 avuç kuru meyve</li>
+                        <li>1 küçük avuç çiğ badem</li>
+                    </ul>
+                </div>
+                
+                <div class="meal">
+                    <h3><i class="fas fa-utensils"></i> Öğle Yemeği</h3>
+                    <img src="https://images.unsplash.com/photo-1580171401298-157353e7b3ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Öğle Yemeği" class="meal-img">
+                    <ul>
+                        <li>Izgara tavuk veya balık (avuç içi kadar)</li>
+                        <li>Bol yeşillikli salata (zeytinyağı ve limon ile)</li>
+                        <li>1/2 su bardağı tam tahıllı pilav veya bulgur</li>
+                        <li>1 bardak ayran</li>
+                    </ul>
+                </div>
+                
+                <div class="meal">
+                    <h3><i class="fas fa-coffee"></i> Ara Öğün</h3>
+                    <img src="https://images.unsplash.com/photo-1495546968767-f0573cca821e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Ara Öğün 2" class="meal-img">
+                    <ul>
+                        <li>1 kase yoğurt</li>
+                        <li>1 tatlı kaşığı bal</li>
+                        <li>1 tatlı kaşığı chia tohumu</li>
+                    </ul>
+                </div>
+                
+                <div class="meal">
+                    <h3><i class="fas fa-moon"></i> Akşam Yemeği</h3>
+                    <img src="https://images.unsplash.com/photo-1574484284002-952d92456975?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Akşam Yemeği" class="meal-img">
+                    <ul>
+                        <li>Sebze yemeği</li>
+                        <li>Mercimek çorbası</li>
+                        <li>2 dilim tam tahıllı ekmek</li>
+                        <li>Cacık veya yoğurt</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><strong>Not:</strong> Bu beslenme planı genel bir örnektir. Kişisel sağlık durumunuza, fiziksel aktivite seviyenize ve ihtiyaçlarınıza göre bir beslenme uzmanı tarafından özelleştirilmiş bir plan oluşturulması önerilir.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="nutrition-tips">
+        <div class="container">
+            <h2 class="section-title">Pratik Beslenme Önerileri</h2>
+            
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-number">1</div>
+                    <h3>Yavaş Yiyin</h3>
+                    <p>Yemeklerinizi yavaş yemek, tokluk hissinin oluşmasına zaman tanır ve aşırı yemeyi önler. Her lokma için yeterince çiğnemeye özen gösterin.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">2</div>
+                    <h3>Porsiyon Kontrolü</h3>
+                    <p>Porsiyonlarınızı kontrol etmek, kalori alımınızı dengelemenin en etkili yollarından biridir. Tabağınızın yarısını sebzelerle, çeyreğini protein kaynakları ile ve diğer çeyreğini tam tahıllarla doldurun.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">3</div>
+                    <h3>Öğün Atlamamak</h3>
+                    <p>Düzenli aralıklarla beslenin ve öğün atlamayın. Bu, metabolizmanızın dengeli çalışmasına ve kan şekerinizin stabil kalmasına yardımcı olur.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">4</div>
+                    <h3>Ev Yemekleri Tercih Edin</h3>
+                    <p>Dışarıda yemek yerine evde yemek pişirmeyi tercih edin. Bu şekilde besinlerin kalitesini ve içeriğini kontrol edebilirsiniz.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">5</div>
+                    <h3>Alışveriş Listesi Hazırlayın</h3>
+                    <p>Market alışverişine çıkmadan önce bir liste hazırlayın ve tok karnına alışveriş yapın. Bu, sağlıksız atıştırmalıkları sepetinize koyma olasılığınızı azaltır.</p>
+                </div>
+                
+                <div class="tip-card">
+                    <div class="tip-number">6</div>
+                    <h3>Gizli Şekerlere Dikkat Edin</h3>
+                    <p>Paketlenmiş gıdalardaki gizli şekerlere dikkat edin. Etiketleri okumayı alışkanlık haline getirin ve şeker içeriği yüksek ürünlerden kaçının.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h3>
+                    <p>Sağlıklı bir yaşam için ihtiyacınız olan her şey.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                        <li><a href="egzersiz.html">Egzersiz</a></li>
+                        <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                        <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                        <li><a href="iletisim.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sağlıklı Yaşam. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Beslenme sayfası için özel JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab işlevselliği
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Aktif tab sınıfını kaldır
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Tıklanan tab'ı aktif yap
+                    button.classList.add('active');
+                    const targetPane = document.getElementById(button.dataset.target);
+                    if (targetPane) {
+                        targetPane.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

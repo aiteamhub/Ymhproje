@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egzersiz - Sağlıklı Yaşam</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Egzersiz Sayfası için Koyu Tema Özel Stilleri */
+        body {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .container {
+            color: #FFFFFF;
+        }
+        
+        .exercise-benefits, 
+        .exercise-types, 
+        .workout-program, 
+        .exercise-tips, 
+        .get-started {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .benefit-card, 
+        .category-card, 
+        .day-card, 
+        .tip-item, 
+        .step {
+            background-color: #1E1E1E;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+        }
+        
+        .section-title,
+        .benefit-card h3,
+        .category-content h3,
+        .workout h4,
+        .tip-header h3,
+        .step h3 {
+            color: #5CDB95;
+        }
+        
+        .benefit-icon,
+        .exercise-list li i,
+        .accordion-icon {
+            color: #5CDB95;
+        }
+        
+        .day-card h3 {
+            background-color: #2D2D2D;
+            color: #5CDB95;
+        }
+        
+        .workout {
+            border-bottom: 1px solid #444444;
+        }
+        
+        .workout.rest {
+            background-color: rgba(92, 219, 149, 0.05);
+        }
+        
+        .recommendation,
+        .program-note {
+            background-color: rgba(92, 219, 149, 0.1);
+            color: #FFFFFF;
+        }
+        
+        .step-number {
+            background-color: #5CDB95;
+            color: #1E1E1E;
+        }
+        
+        /* Egzersiz Türleri */
+        .category-card {
+            background-color: #1E1E1E;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .category-content {
+            color: #FFFFFF;
+        }
+        
+        .category-content h3 {
+            color: #5CDB95;
+        }
+        
+        .exercise-list li {
+            color: #FFFFFF;
+        }
+        
+        .exercise-list li i {
+            color: #5CDB95;
+        }
+        
+        /* Egzersiz Sayfası Hero görüntüsü */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1631&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Benefit kartlarına resim ekleme */
+        .benefit-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        /* Kategori resmi */
+        .category-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            padding: 20px;
+        }
+        
+        .category-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Program resmi */
+        .program-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .program-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Adım resimleri */
+        .step-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #5CDB95;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                    <li><a href="egzersiz.html" class="active">Egzersiz</a></li>
+                    <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                    <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Egzersiz ve Fiziksel Aktivite</h2>
+            <p>Düzenli fiziksel aktivite, sağlığınızı korumanın ve yaşam kalitenizi artırmanın en önemli yollarından biridir.</p>
+        </div>
+    </section>
+
+    <section class="exercise-benefits">
+        <div class="container">
+            <h2 class="section-title">Düzenli Egzersizin Faydaları</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Kardiyovasküler Sağlık</h3>
+                    <p>Düzenli egzersiz, kalp ve damar sağlığınızı destekler, kan basıncınızı düzenler ve kalp hastalığı riskini azaltır.</p>
+                    <img src="https://images.unsplash.com/photo-1559717201-fbb671ff56b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="Kardiyovasküler Sağlık">
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Kas ve Kemik Sağlığı</h3>
+                    <p>Güç egzersizleri, kaslarınızı güçlendirir, kemik yoğunluğunuzu artırır ve yaşlanmayla oluşan kas kaybını yavaşlatır.</p>
+                    <img src="https://images.unsplash.com/photo-1581009137042-c552e485697a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Kas ve Kemik Sağlığı">
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Zihinsel Sağlık</h3>
+                    <p>Fiziksel aktivite, endorfin salgılanmasını artırarak ruh halinizi iyileştirir, stres ve anksiyeteyi azaltır, depresyon riskini düşürür.</p>
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1099&q=80" alt="Zihinsel Sağlık">
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Bağışıklık Sistemi</h3>
+                    <p>Düzenli egzersiz, bağışıklık sisteminizi güçlendirir, hastalıklara karşı direnci artırır ve iyileşme sürecini hızlandırır.</p>
+                    <img src="https://images.unsplash.com/photo-1506126279646-a697353d3166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Bağışıklık Sistemi">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="exercise-types">
+        <div class="container">
+            <h2 class="section-title">Egzersiz Türleri</h2>
+            
+            <div class="exercise-categories">
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Kardiyovasküler Egzersizler">
+                    </div>
+                    <div class="category-content">
+                        <h3>Kardiyovasküler Egzersizler</h3>
+                        <p>Kardiyovasküler egzersizler, kalp atış hızınızı artıran, nefes alış verişinizi hızlandıran ve kalp-damar sisteminizi güçlendiren aktivitelerdir.</p>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check"></i> Yürüyüş ve koşu</li>
+                            <li><i class="fas fa-check"></i> Bisiklet sürme</li>
+                            <li><i class="fas fa-check"></i> Yüzme</li>
+                            <li><i class="fas fa-check"></i> Dans</li>
+                            <li><i class="fas fa-check"></i> Kürek çekme</li>
+                        </ul>
+                        <div class="recommendation">
+                            <p>Önerilen: Haftada en az 150 dakika orta şiddetli veya 75 dakika yüksek şiddetli kardiyovasküler egzersiz yapın.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card reverse">
+                    <div class="category-content">
+                        <h3>Güç ve Direnç Egzersizleri</h3>
+                        <p>Güç egzersizleri, kaslarınızı çalıştırarak güçlendirir, kemik yoğunluğunu artırır ve metabolizmanızı hızlandırır.</p>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check"></i> Vücut ağırlığı egzersizleri (şınav, squat, plank)</li>
+                            <li><i class="fas fa-check"></i> Serbest ağırlıklar ile çalışma</li>
+                            <li><i class="fas fa-check"></i> Makine ile direnç egzersizleri</li>
+                            <li><i class="fas fa-check"></i> Direnç bantları ile çalışma</li>
+                            <li><i class="fas fa-check"></i> Fonksiyonel fitness</li>
+                        </ul>
+                        <div class="recommendation">
+                            <p>Önerilen: Haftada en az 2 gün, vücudunuzdaki tüm büyük kas gruplarını çalıştıran direnç egzersizleri yapın.</p>
+                        </div>
+                    </div>
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1532384748853-8f54a8f476e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Güç Egzersizleri">
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1562088287-bde35a1ea917?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80" alt="Esneklik ve Denge Egzersizleri">
+                    </div>
+                    <div class="category-content">
+                        <h3>Esneklik ve Denge Egzersizleri</h3>
+                        <p>Bu tip egzersizler, eklem hareket aralığınızı artırır, sakatlanma riskinizi azaltır ve postürünüzü iyileştirir.</p>
+                        <ul class="exercise-list">
+                            <li><i class="fas fa-check"></i> Yoga</li>
+                            <li><i class="fas fa-check"></i> Pilates</li>
+                            <li><i class="fas fa-check"></i> Tai Chi</li>
+                            <li><i class="fas fa-check"></i> Germe egzersizleri</li>
+                            <li><i class="fas fa-check"></i> Denge tahtası egzersizleri</li>
+                        </ul>
+                        <div class="recommendation">
+                            <p>Önerilen: Haftada en az 2-3 gün esneklik egzersizleri yapın, özellikle yoğun direnç antrenmanlarından sonra.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="workout-program">
+        <div class="container">
+            <h2 class="section-title">Haftalık Egzersiz Programı Örneği</h2>
+            
+            <p class="program-description">Aşağıda, başlangıç seviyesi için dengeli bir haftalık egzersiz programı örneği bulunmaktadır. Program, kademeli olarak arttırılabilir.</p>
+            
+            <div class="program-image">
+                <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Haftalık Egzersiz Programı">
+            </div>
+            
+            <div class="days-container">
+                <div class="day">
+                    <h3>Pazartesi</h3>
+                    <p>Kardiyovasküler Egzersiz: 30 dakika tempolu yürüyüş veya bisiklet</p>
+                </div>
+                
+                <div class="day">
+                    <h3>Salı</h3>
+                    <p>Güç Egzersizi: Üst vücut - Şınav, sırt ve omuz egzersizleri (her biri 2-3 set, 10-12 tekrar)</p>
+                </div>
+                
+                <div class="day">
+                    <h3>Çarşamba</h3>
+                    <p>Esneklik: 30 dakika yoga veya pilates</p>
+                </div>
+                
+                <div class="day">
+                    <h3>Perşembe</h3>
+                    <p>Kardiyovasküler Egzersiz: 30 dakika yüzme veya eliptik bisiklet</p>
+                </div>
+                
+                <div class="day">
+                    <h3>Cuma</h3>
+                    <p>Güç Egzersizi: Alt vücut - Squat, lunge, bacak egzersizleri (her biri 2-3 set, 10-12 tekrar)</p>
+                </div>
+                
+                <div class="day">
+                    <h3>Cumartesi</h3>
+                    <p>Kombine Antrenman: 20 dakika HIIT (Yüksek Yoğunluklu Interval Antrenman) veya 45 dakika hafif tempolu yürüyüş</p>
+                </div>
+                
+                <div class="day">
+                    <h3>Pazar</h3>
+                    <p>Dinlenme veya aktif dinlenme (hafif yürüyüş, germe egzersizleri)</p>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><strong>Not:</strong> Bu program genel bir örnektir. Kişisel sağlık durumunuza, mevcut fitness seviyenize ve hedeflerinize göre bir fitness uzmanı tarafından özelleştirilmiş bir program oluşturulması önerilir. Yeni bir egzersiz programına başlamadan önce bir sağlık uzmanına danışmanız önemlidir.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="exercise-tips">
+        <div class="container">
+            <h2 class="section-title">Egzersiz İpuçları</h2>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <img src="https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Isınma" class="step-image">
+                    <div class="step-content">
+                        <h3>Isınma ve Soğuma</h3>
+                        <p>Her egzersiz öncesi 5-10 dakika ısınma ve sonrasında soğuma hareketleri yapın. Bu, sakatlanma riskinizi azaltır ve kas ağrılarını önler.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Kademeli İlerleme" class="step-image">
+                    <div class="step-content">
+                        <h3>Kademeli İlerleme</h3>
+                        <p>Egzersiz yoğunluğunu ve süresini kademeli olarak artırın. Çok hızlı başlamak motivasyon kaybına ve sakatlanmalara neden olabilir.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Hidrasyon" class="step-image">
+                    <div class="step-content">
+                        <h3>Hidrasyon</h3>
+                        <p>Egzersiz öncesi, sırası ve sonrasında bol su için. Dehidratasyon, performansınızı düşürebilir ve sağlık sorunlarına yol açabilir.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <img src="https://images.unsplash.com/photo-1606889464198-fcb18894cf50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Doğru Form" class="step-image">
+                    <div class="step-content">
+                        <h3>Doğru Form</h3>
+                        <p>Her egzersizde doğru form ve tekniğe odaklanın. Yanlış teknik, sakatlanmalara ve istenen sonuçların elde edilememesine neden olabilir.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <img src="https://images.unsplash.com/photo-1553531384-411a247cff73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dinlenme ve Toparlanma" class="step-image">
+                    <div class="step-content">
+                        <h3>Dinlenme ve Toparlanma</h3>
+                        <p>Kas gelişimi ve toparlanma için yeterli dinlenme süreleri verin. Aynı kas gruplarını iki gün üst üste çalıştırmaktan kaçının.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="get-started">
+        <div class="container">
+            <h2 class="section-title">Egzersize Başlarken</h2>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Sağlık Kontrolü</h3>
+                    <p>Özellikle kronik bir sağlık sorununuz varsa veya 40 yaş üzerindeyseniz, yeni bir egzersiz programına başlamadan önce bir doktora danışın.</p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Hedeflerinizi Belirleyin</h3>
+                    <p>Spesifik, ölçülebilir ve ulaşılabilir hedefler belirleyin. Bu, motivasyonunuzu yüksek tutmanıza yardımcı olacaktır.</p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Sevdiğiniz Aktiviteleri Seçin</h3>
+                    <p>Keyif aldığınız aktiviteleri seçmek, düzenli egzersiz alışkanlığı geliştirmenizi kolaylaştırır.</p>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Destek Alın</h3>
+                    <p>Bir antrenör, arkadaş veya egzersiz grubu ile çalışmak motivasyonunuzu artırabilir ve doğru teknikleri öğrenmenize yardımcı olabilir.</p>
+                </div>
+            </div>
+            
+            <div class="calculator-info">
+                <p>Egzersiz rutininizi planlarken, <a href="hesaplayicilar.html">Hesaplayıcılar</a> sayfamızdaki BMI, Kalori İhtiyacı ve İdeal Kilo hesaplayıcılarından yararlanabilirsiniz.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h3>
+                    <p>Sağlıklı bir yaşam için ihtiyacınız olan her şey.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                        <li><a href="egzersiz.html">Egzersiz</a></li>
+                        <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                        <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                        <li><a href="iletisim.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sağlıklı Yaşam. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sağlıklı Yaşam - Ana Sayfa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Ana Sayfa için Koyu Tema Özel Stilleri */
+        body {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .container {
+            color: #FFFFFF;
+        }
+        
+        .features,
+        .testimonials,
+        .subscribe {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .feature-card,
+        .testimonial {
+            background-color: #1E1E1E;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+        }
+        
+        .section-title,
+        .feature-card h3 {
+            color: #5CDB95;
+        }
+        
+        .feature-card i {
+            color: #5CDB95;
+        }
+        
+        .testimonial-author {
+            color: #5CDB95;
+        }
+        
+        .subscribe {
+            background-color: #2D2D2D;
+        }
+        
+        #subscribe-form input {
+            background-color: #353535;
+            border: 1px solid #444444;
+            color: #FFFFFF;
+        }
+        
+        #subscribe-form input:focus {
+            border-color: #5CDB95;
+            box-shadow: 0 0 0 3px rgba(92, 219, 149, 0.2);
+        }
+        
+        /* Hero bölümü için arka plan resmi */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+        }
+        
+        /* Özelliklerin altına resim ekleme */
+        .feature-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        /* Testimonial yazarı için avatar resmi */
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+        
+        .testimonial-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Ana Sayfa</a></li>
+                    <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                    <li><a href="egzersiz.html">Egzersiz</a></li>
+                    <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                    <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Sağlıklı Yaşamın Anahtarları</h2>
+                <p>Dengeli beslenme, düzenli egzersiz ve zihinsel huzur ile yaşam kalitenizi artırın.</p>
+                <a href="#daha-fazla" class="btn">Daha Fazla Bilgi</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="daha-fazla" class="features">
+        <div class="container">
+            <h2 class="section-title">Sağlıklı Yaşam İçin</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>Dengeli Beslenme</h3>
+                    <p>Vücudunuzun ihtiyacı olan besinleri dengeli bir şekilde almanın önemi ve yöntemleri.</p>
+                    <img src="https://images.unsplash.com/photo-1564834744159-ff0ea41ba4b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Dengeli Beslenme">
+                    <a href="beslenme.html" class="btn-small">Devamını Oku</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-running"></i>
+                    <h3>Düzenli Egzersiz</h3>
+                    <p>Fiziksel aktivitenin sağlığınız üzerindeki olumlu etkileri ve başlangıç önerileri.</p>
+                    <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Düzenli Egzersiz">
+                    <a href="egzersiz.html" class="btn-small">Devamını Oku</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Zihinsel Sağlık</h3>
+                    <p>Zihinsel sağlığınızı korumak ve stresle başa çıkmak için etkili yöntemler.</p>
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Zihinsel Sağlık">
+                    <a href="zihinsel-saglik.html" class="btn-small">Devamını Oku</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Kullanıcı Deneyimleri</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"Bu sitedeki beslenme tavsiyeleri sayesinde daha enerjik hissediyorum ve 3 ayda 5 kilo verdim."</p>
+                    <div class="testimonial-author">
+                        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Ayşe K.">
+                        - Ayşe K.
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Önerilen egzersiz programı ile sırt ağrılarım azaldı ve genel sağlık durumum iyileşti."</p>
+                    <div class="testimonial-author">
+                        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Mehmet Y.">
+                        - Mehmet Y.
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Meditasyon teknikleri hayatımı değiştirdi. Artık stresle daha iyi başa çıkabiliyorum."</p>
+                    <div class="testimonial-author">
+                        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1569779213435-ba3167ecf6b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Zeynep A.">
+                        - Zeynep A.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="subscribe">
+        <div class="container">
+            <h2>Sağlıklı Yaşam Bültenimize Abone Olun</h2>
+            <p>En güncel bilgiler ve tavsiyeler için e-posta listemize katılın.</p>
+            <form id="subscribe-form">
+                <input type="email" placeholder="E-posta adresiniz" required>
+                <button type="submit" class="btn">Abone Ol</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h3>
+                    <p>Sağlıklı bir yaşam için ihtiyacınız olan her şey.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                        <li><a href="egzersiz.html">Egzersiz</a></li>
+                        <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                        <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                        <li><a href="iletisim.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sağlıklı Yaşam. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

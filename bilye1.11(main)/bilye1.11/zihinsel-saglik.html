@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zihinsel Sağlık - Sağlıklı Yaşam</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Zihinsel Sağlık Sayfası için Koyu Tema Özel Stilleri */
+        body {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .container {
+            color: #FFFFFF;
+        }
+        
+        .mental-health-intro, 
+        .mental-health-importance, 
+        .mental-health-practices, 
+        .stress-management,
+        .sleep-importance,
+        .professional-help {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+        
+        .importance-card, 
+        .practice-card, 
+        .technique-card, 
+        .warning-sign,
+        .help-resources {
+            background-color: #1E1E1E;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #FFFFFF;
+        }
+        
+        .section-title,
+        .importance-card h3,
+        .practice-content h3,
+        .technique-card h3,
+        .sleep-info h3,
+        .help-resources h3 {
+            color: #5CDB95;
+        }
+        
+        .importance-icon,
+        .technique-icon,
+        .sleep-tips li i {
+            color: #5CDB95;
+        }
+        
+        .warning-sign i {
+            color: #FB7185;
+        }
+        
+        .emergency-info {
+            background-color: rgba(251, 113, 133, 0.1);
+            border-left: 5px solid #FB7185;
+        }
+        
+        .emergency-info h4 {
+            color: #FB7185;
+        }
+        
+        .practice-steps li::before,
+        .help-resources ul li::before {
+            color: #5CDB95;
+        }
+        
+        .practice-image img,
+        .intro-image img,
+        .sleep-image img {
+            border: 1px solid #444444;
+        }
+        
+        /* Hero bölümü için arka plan resmi */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1529933037705-0d537317ae7b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+        }
+        
+        /* Önem kartlarında resim */
+        .importance-card {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 40px;
+        }
+        
+        .importance-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+        
+        /* Uygulama resimleri */
+        .practice-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        /* Teknik kartlarında resim */
+        .technique-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+            border: 2px solid #5CDB95;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                    <li><a href="egzersiz.html">Egzersiz</a></li>
+                    <li><a href="zihinsel-saglik.html" class="active">Zihinsel Sağlık</a></li>
+                    <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Zihinsel Sağlık</h2>
+            <p>Zihinsel sağlık, genel sağlığımızın ayrılmaz bir parçasıdır ve yaşam kalitemizi doğrudan etkiler.</p>
+        </div>
+    </section>
+
+    <section class="mental-health-intro">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h2 class="section-title">Zihinsel Sağlık Nedir?</h2>
+                    <p>Zihinsel sağlık, duygusal, psikolojik ve sosyal iyilik halimizi kapsar. Düşünme, hissetme ve davranış biçimimizi etkiler. Ayrıca stresle başa çıkma, diğer insanlarla ilişki kurma, seçimler yapma ve hayatın zorluklarıyla mücadele etme yeteneğimizi belirler.</p>
+                    <p>İyi bir zihinsel sağlık, sadece zihinsel hastalıkların olmaması değil, aynı zamanda olumlu düşünce ve davranışlar geliştirme, zorlukları aşma ve hayattan keyif alma yeteneğidir.</p>
+                    <p>Fiziksel sağlık gibi, zihinsel sağlık da sürekli ilgi ve bakım gerektirir. Bu sayfada, zihinsel sağlığınızı korumak ve geliştirmek için pratik bilgiler ve teknikler bulacaksınız.</p>
+                </div>
+                <div class="intro-image">
+                    <img src="https://images.unsplash.com/photo-1532798442725-41036acc7489?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Meditasyon yapan kadın">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mental-health-importance">
+        <div class="container">
+            <h2 class="section-title">Zihinsel Sağlığın Önemi</h2>
+            
+            <div class="importance-cards">
+                <div class="importance-card">
+                    <div class="importance-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Yaşam Dengesi</h3>
+                    <p>İyi bir zihinsel sağlık, hayatın farklı alanları arasında denge kurmanıza yardımcı olur. İş, aile, arkadaşlar ve kişisel zamanınız arasında daha sağlıklı bir denge oluşturabilirsiniz.</p>
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1099&q=80" alt="Yaşam Dengesi">
+                </div>
+                
+                <div class="importance-card">
+                    <div class="importance-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>İlişki Kalitesi</h3>
+                    <p>Zihinsel sağlık, diğer insanlarla kurduğunuz ilişkilerin kalitesini etkiler. Kendinizle barışık olduğunuzda, başkalarıyla daha sağlıklı ve tatmin edici ilişkiler kurabilirsiniz.</p>
+                    <img src="https://images.unsplash.com/photo-1525026198548-4baa812f1183?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1168&q=80" alt="İlişki Kalitesi">
+                </div>
+                
+                <div class="importance-card">
+                    <div class="importance-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Bilişsel İşlevler</h3>
+                    <p>İyi bir zihinsel sağlık, düşünme, öğrenme, hafıza ve karar verme gibi bilişsel işlevlerinizi olumlu etkiler. Bu da iş ve eğitim hayatınızda daha başarılı olmanızı sağlar.</p>
+                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1160&q=80" alt="Bilişsel İşlevler">
+                </div>
+                
+                <div class="importance-card">
+                    <div class="importance-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Fiziksel Sağlık</h3>
+                    <p>Zihin ve beden arasında güçlü bir bağlantı vardır. Zihinsel sağlığınız, bağışıklık sisteminiz, kalp sağlığınız ve genel fiziksel iyilik haliniz üzerinde önemli bir etkiye sahiptir.</p>
+                    <img src="https://images.unsplash.com/photo-1448387473223-5c37445527e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Fiziksel Sağlık">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mental-health-practices">
+        <div class="container">
+            <h2 class="section-title">Zihinsel Sağlığı Güçlendiren Uygulamalar</h2>
+            
+            <div class="practices-container">
+                <div class="practice-card">
+                    <div class="practice-image">
+                        <img src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Mindfulness">
+                    </div>
+                    <div class="practice-content">
+                        <h3>Mindfulness (Bilinçli Farkındalık)</h3>
+                        <p>Mindfulness, şu ana odaklanma ve dikkatinizi yargılamadan deneyimlerinize verme pratiğidir. Stres ve kaygıyı azaltır, duygu düzenlemeyi iyileştirir.</p>
+                        
+                        <h4>Nasıl Uygulayabilirsiniz?</h4>
+                        <ul class="practice-steps">
+                            <li>Günde 5-10 dakika sessiz bir yerde oturun</li>
+                            <li>Nefesinize odaklanın, her nefes alış verişi hissedin</li>
+                            <li>Zihniniz dağıldığında, yargılamadan dikkatinizi nazikçe nefese geri getirin</li>
+                            <li>Günlük aktivitelerinizi daha bilinçli yapın (yemek yerken, yürürken tam dikkatinizi verin)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="practice-card reverse">
+                    <div class="practice-image">
+                        <img src="https://images.unsplash.com/photo-1474176857210-7287d38d27c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Şükran Uygulaması">
+                    </div>
+                    <div class="practice-content">
+                        <h3>Şükran Uygulaması</h3>
+                        <p>Hayatınızdaki olumlu şeylere odaklanmak, mutluluğu artırır ve olumsuz duygularla başa çıkmanıza yardımcı olur. Minnettarlık pratiği, zihinsel esnekliği geliştirir.</p>
+                        
+                        <h4>Nasıl Uygulayabilirsiniz?</h4>
+                        <ul class="practice-steps">
+                            <li>Her gün minnettar olduğunuz 3 şeyi not edin</li>
+                            <li>Küçük şeylere dikkat edin (güzel bir gün batımı, bir fincan çay, bir arkadaşın gülümsemesi)</li>
+                            <li>Şükran mektubu yazın ve mümkünse kişiye okuyun</li>
+                            <li>Her akşam günün olumlu yönlerini düşünerek uyuyun</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="practice-card">
+                    <div class="practice-image">
+                        <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Fiziksel Aktivite">
+                    </div>
+                    <div class="practice-content">
+                        <h3>Fiziksel Aktivite</h3>
+                        <p>Düzenli egzersiz sadece fiziksel sağlığınızı değil, aynı zamanda zihinsel sağlığınızı da iyileştirir. Endorfin salgılanmasını artırır, stresi azaltır ve bilişsel işlevleri geliştirir.</p>
+                        
+                        <h4>Nasıl Uygulayabilirsiniz?</h4>
+                        <ul class="practice-steps">
+                            <li>Haftada en az 150 dakika orta şiddetli aktivite yapmayı hedefleyin</li>
+                            <li>Sevdiğiniz aktiviteleri seçin (yürüyüş, dans, yoga, yüzme)</li>
+                            <li>Doğada egzersiz yapmak ekstra zihinsel fayda sağlar</li>
+                            <li>Egzersiz rutininizi sosyalleşme ile birleştirin (arkadaşlarla yürüyüş, grup dersleri)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="practice-card reverse">
+                    <div class="practice-image">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f8e1c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Sosyal Bağlantılar">
+                    </div>
+                    <div class="practice-content">
+                        <h3>Sosyal Bağlantılar</h3>
+                        <p>Güçlü sosyal ilişkiler, zihinsel sağlığın temel bileşenlerinden biridir. Destek sistemleri, stresle başa çıkma ve genel yaşam memnuniyeti üzerinde olumlu etki yaratır.</p>
+                        
+                        <h4>Nasıl Uygulayabilirsiniz?</h4>
+                        <ul class="practice-steps">
+                            <li>Düzenli olarak sevdiklerinizle zaman geçirin</li>
+                            <li>Aktif dinleme pratiği yapın, tam dikkatle dinleyin</li>
+                            <li>Topluluk etkinliklerine katılın (kulüpler, gönüllü çalışmalar)</li>
+                            <li>Yardım istemeyi ve duygularınızı paylaşmayı öğrenin</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stress-management">
+        <div class="container">
+            <h2 class="section-title">Stres Yönetimi Teknikleri</h2>
+            
+            <div class="techniques-grid">
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Derin Nefes">
+                    <h3>Derin Nefes Egzersizleri</h3>
+                    <p>Derin nefes alma, vücudunuzun stres tepkisini hızla düzenleyen güçlü bir tekniktir. Otonom sinir sisteminizi sakinleştirir ve rahatlama yanıtını tetikler.</p>
+                    <ol>
+                        <li>Rahat bir pozisyonda oturun veya uzanın</li>
+                        <li>Burnunuzdan yavaşça 4 saniye nefes alın</li>
+                        <li>Nefesinizi 2 saniye tutun</li>
+                        <li>Ağzınızdan 6 saniye yavaşça nefes verin</li>
+                        <li>Bu döngüyü 5-10 kez tekrarlayın</li>
+                    </ol>
+                </div>
+                
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Fiziksel Aktivite">
+                    <h3>Fiziksel Aktivite</h3>
+                    <p>Egzersiz, vücuttaki stres hormonlarını azaltır ve endorfin salgılanmasını artırır. Düzenli fiziksel aktivite, stres yönetiminin en etkili yollarından biridir.</p>
+                    <ul>
+                        <li>Günde en az 30 dakika orta yoğunlukta egzersiz yapın</li>
+                        <li>Yürüyüş, koşu, yüzme veya bisiklet gibi aktiviteler tercih edin</li>
+                        <li>Yoga veya tai chi gibi zihin-beden egzersizleri deneyin</li>
+                        <li>Dans etmek de harika bir stres gidericidir</li>
+                    </ul>
+                </div>
+                
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Günlük Tutma">
+                    <h3>Günlük Tutma</h3>
+                    <p>Düşüncelerinizi ve duygularınızı yazıya dökmek, zihinsel karmaşayı azaltır ve stresle başa çıkmanıza yardımcı olur. Ayrıca öz farkındalığı artırır.</p>
+                    <ul>
+                        <li>Her gün 10-15 dakika ayırın</li>
+                        <li>Hislerinizi, düşüncelerinizi filtrelemeden yazın</li>
+                        <li>Günün olumlu yönlerini not edin</li>
+                        <li>Stres kaynaklarını ve olası çözümleri yazın</li>
+                    </ul>
+                </div>
+                
+                <div class="technique-card">
+                    <div class="technique-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Müzik">
+                    <h3>Müzik Terapisi</h3>
+                    <p>Müzik dinlemek veya çalmak, stres hormonlarını azaltabilir ve ruh halinizi iyileştirebilir. Sakinleştirici özelliğiyle anksiyeteyi hafifletir.</p>
+                    <ul>
+                        <li>Sakinleştirici, düşük tempolu müzikler seçin</li>
+                        <li>Doğa sesleri içeren kayıtları deneyin</li>
+                        <li>Bir müzik aleti çalmayı öğrenmeyi düşünün</li>
+                        <li>Sevdiğiniz müzikle birlikte dans edin veya şarkı söyleyin</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="sleep-importance">
+        <div class="container">
+            <h2 class="section-title">Uyku ve Zihinsel Sağlık</h2>
+            
+            <div class="sleep-content">
+                <div class="sleep-image">
+                    <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1460&q=80" alt="Uyku">
+                </div>
+                <div class="sleep-info">
+                    <p>Kaliteli uyku, zihinsel sağlığın temel taşlarından biridir. Yetersiz uyku, kaygı, depresyon, stres ve bilişsel işlev bozukluklarına neden olabilir.</p>
+                    
+                    <h3>Daha İyi Uyku İçin İpuçları</h3>
+                    <ul class="sleep-tips">
+                        <li><i class="fas fa-moon"></i> <strong>Düzenli Bir Program Oluşturun:</strong> Her gün aynı saatte yatıp kalkın, hafta sonları da buna uyun.</li>
+                        <li><i class="fas fa-lightbulb"></i> <strong>Uyku Ortamınızı Düzenleyin:</strong> Yatak odanızı karanlık, sessiz ve rahat bir sıcaklıkta tutun.</li>
+                        <li><i class="fas fa-tv-slash"></i> <strong>Ekranlardan Uzak Durun:</strong> Yatmadan en az 1 saat önce telefon, tablet ve bilgisayar kullanımını sınırlayın.</li>
+                        <li><i class="fas fa-coffee"></i> <strong>Kafein ve Alkolü Sınırlayın:</strong> Öğleden sonra kafein almaktan ve yatmadan önce alkol tüketmekten kaçının.</li>
+                        <li><i class="fas fa-running"></i> <strong>Fiziksel Aktivite:</strong> Düzenli egzersiz yapın, ancak yatmadan hemen önce yoğun egzersizlerden kaçının.</li>
+                        <li><i class="fas fa-bath"></i> <strong>Rahatlatıcı Rutinler Geliştirin:</strong> Ilık duş almak, kitap okumak veya meditasyon yapmak gibi rahatlatıcı bir yatma rutini oluşturun.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="professional-help">
+        <div class="container">
+            <h2 class="section-title">Ne Zaman Profesyonel Yardım Almalısınız?</h2>
+            
+            <div class="help-content">
+                <p class="help-intro">Kendimize bakım yapmak ve zihinsel sağlığımızı korumak için çaba göstermek önemlidir. Ancak bazen, profesyonel yardım almak en sağlıklı seçenektir. Aşağıdaki belirtiler, profesyonel destek almanın yararlı olabileceğini gösterir:</p>
+                
+                <div class="warning-signs">
+                    <div class="warning-sign">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Uzun süreli üzüntü veya umutsuzluk hissi</p>
+                    </div>
+                    <div class="warning-sign">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Aşırı korku, endişe veya suçluluk duyguları</p>
+                    </div>
+                    <div class="warning-sign">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Günlük işlevlerde zorluk (iş, okul, ev sorumlulukları)</p>
+                    </div>
+                    <div class="warning-sign">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Uyku veya iştah düzeninde önemli değişiklikler</p>
+                    </div>
+                    <div class="warning-sign">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>Sosyal izolasyon veya ilişkilerde geri çekilme</p>
+                    </div>
+                    <div class="warning-sign">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>İntihar düşünceleri veya kendine zarar verme isteği</p>
+                    </div>
+                </div>
+                
+                <div class="help-resources">
+                    <h3>Yardım Alabileceğiniz Kaynaklar</h3>
+                    <ul>
+                        <li><strong>Psikiyatristler:</strong> Tıp doktorlarıdır ve ilaç tedavisi uygulayabilirler.</li>
+                        <li><strong>Psikologlar:</strong> Danışmanlık ve terapi hizmetleri sunarlar.</li>
+                        <li><strong>Psikolojik Danışmanlar:</strong> Belirli yaşam zorluklarında rehberlik sağlarlar.</li>
+                        <li><strong>Aile Hekiminiz:</strong> İlk başvuru noktası olabilir ve sizi bir uzmana yönlendirebilir.</li>
+                        <li><strong>Çevrimiçi Terapi Platformları:</strong> Uzaktan terapi ve danışmanlık hizmetleri sunarlar.</li>
+                    </ul>
+                    
+                    <div class="emergency-info">
+                        <h4>Acil Durumlarda</h4>
+                        <p>Kendinize veya başkalarına zarar verme düşünceleriniz varsa, hemen yardım alın:</p>
+                        <ul>
+                            <li>112 Acil Servisi Arayın</li>
+                            <li><strong>İntihar Önleme Hattı:</strong> 182</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h3>
+                    <p>Sağlıklı bir yaşam için ihtiyacınız olan her şey.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                        <li><a href="egzersiz.html">Egzersiz</a></li>
+                        <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                        <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                        <li><a href="iletisim.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sağlıklı Yaşam. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

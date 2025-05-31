@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesaplayıcılar - Sağlıklı Yaşam</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js kütüphanesi -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Ana Sayfa</a></li>
+                    <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                    <li><a href="egzersiz.html">Egzersiz</a></li>
+                    <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                    <li><a href="hesaplayicilar.html" class="active">Hesaplayıcılar</a></li>
+                    <li><a href="iletisim.html">İletişim</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2>Sağlık Hesaplayıcıları</h2>
+            <p>Sağlıklı yaşam yolculuğunuzda size yardımcı olacak hesaplama araçları</p>
+        </div>
+    </section>
+
+    <section class="calculators-section">
+        <div class="container">
+            <h2 class="section-title">Sağlık Hesaplayıcıları</h2>
+            
+            <div class="calculators-grid">
+                <!-- BMI Hesaplayıcı -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <i class="fas fa-weight"></i>
+                        <h3>Vücut Kitle İndeksi (BMI) Hesaplayıcı</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <p>Vücut Kitle İndeksi (BMI), kilonuzun boyunza göre sağlıklı bir aralıkta olup olmadığını değerlendiren bir ölçüdür.</p>
+                        
+                        <form id="bmi-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="bmi-weight">Kilonuz (kg)</label>
+                                <input type="number" id="bmi-weight" min="30" max="300" step="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bmi-height">Boyunuz (cm)</label>
+                                <input type="number" id="bmi-height" min="100" max="250" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="button" id="calculate-bmi" class="btn">Hesapla</button>
+                            </div>
+                        </form>
+                        
+                        <div id="bmi-result" class="calculator-result">
+                            <p>BMI değeriniz: <span id="bmi-value">--</span></p>
+                            <p>Kategori: <span id="bmi-category">--</span></p>
+                        </div>
+                        
+                        <div class="calculator-info">
+                            <h4>BMI Kategorileri:</h4>
+                            <ul>
+                                <li>18.5'ten düşük: Zayıf</li>
+                                <li>18.5 - 24.9: Normal</li>
+                                <li>25 - 29.9: Fazla Kilolu</li>
+                                <li>30 ve üzeri: Obez</li>
+                            </ul>
+                            <p><small>Not: BMI, kas kütlesi ve vücut yapısı gibi faktörleri dikkate almaz. Sağlık durumunuz için mutlaka bir doktora danışın.</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Kalori İhtiyacı Hesaplayıcı -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <i class="fas fa-fire"></i>
+                        <h3>Günlük Kalori İhtiyacı Hesaplayıcı</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <p>Günlük kalori ihtiyacınızı hesaplayarak, sağlıklı beslenme planınızı oluşturabilirsiniz.</p>
+                        
+                        <form id="calorie-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="calorie-gender">Cinsiyet</label>
+                                <select id="calorie-gender" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="male">Erkek</option>
+                                    <option value="female">Kadın</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="calorie-age">Yaş</label>
+                                <input type="number" id="calorie-age" min="15" max="100" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="calorie-weight">Kilo (kg)</label>
+                                <input type="number" id="calorie-weight" min="30" max="300" step="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="calorie-height">Boy (cm)</label>
+                                <input type="number" id="calorie-height" min="100" max="250" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="calorie-activity">Aktivite Seviyesi</label>
+                                <select id="calorie-activity" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="1.2">Hareketsiz (Ofis işi, Az veya Hiç Egzersiz)</option>
+                                    <option value="1.375">Hafif Aktif (Haftada 1-3 gün egzersiz)</option>
+                                    <option value="1.55">Orta Aktif (Haftada 3-5 gün egzersiz)</option>
+                                    <option value="1.725">Çok Aktif (Haftada 6-7 gün yoğun egzersiz)</option>
+                                    <option value="1.9">Ekstra Aktif (Fiziksel iş veya günde 2x egzersiz)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="button" id="calculate-calorie" class="btn">Hesapla</button>
+                            </div>
+                        </form>
+                        
+                        <div id="calorie-result" class="calculator-result">
+                            <p>Günlük kalori ihtiyacınız: <span id="calorie-value">--</span> kcal</p>
+                            <div id="calorie-details">
+                                <p>Kilo koruma: <span id="maintain-calorie">--</span> kcal</p>
+                                <p>Kilo verme (-%15): <span id="lose-calorie">--</span> kcal</p>
+                                <p>Kilo alma (+%15): <span id="gain-calorie">--</span> kcal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- İdeal Kilo Hesaplayıcı -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3>İdeal Kilo Hesaplayıcı</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <p>İdeal kilo hesaplayıcı, boyunuza göre tahmini ideal kilo aralığınızı gösterir.</p>
+                        
+                        <form id="ideal-weight-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="ideal-gender">Cinsiyet</label>
+                                <select id="ideal-gender" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="male">Erkek</option>
+                                    <option value="female">Kadın</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="ideal-height">Boy (cm)</label>
+                                <input type="number" id="ideal-height" min="100" max="250" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="button" id="calculate-ideal" class="btn">Hesapla</button>
+                            </div>
+                        </form>
+                        
+                        <div id="ideal-result" class="calculator-result">
+                            <p>İdeal kilo aralığınız: <span id="ideal-range">--</span> kg</p>
+                            <p>Formüle göre: <span id="ideal-formula">--</span></p>
+                        </div>
+                        
+                        <div class="calculator-info">
+                            <p><small>Not: Bu hesaplamalar genel bir tahmindir. İdeal kilo, vücut yapınız, kas kitleniz ve genel sağlık durumunuza göre değişiklik gösterebilir.</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Su İhtiyacı Hesaplayıcı -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <i class="fas fa-tint"></i>
+                        <h3>Günlük Su İhtiyacı Hesaplayıcı</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <p>Vücut ağırlığınıza göre günlük su ihtiyacınızı hesaplayın.</p>
+                        
+                        <form id="water-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="water-weight">Kilonuz (kg)</label>
+                                <input type="number" id="water-weight" min="30" max="300" step="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="water-activity">Aktivite Seviyesi</label>
+                                <select id="water-activity" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="30">Az Aktif (Az veya Hiç Egzersiz)</option>
+                                    <option value="35">Orta Aktif (Hafif Egzersiz)</option>
+                                    <option value="40">Çok Aktif (Düzenli Egzersiz)</option>
+                                    <option value="45">Ekstra Aktif (Yoğun Egzersiz)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="button" id="calculate-water" class="btn">Hesapla</button>
+                            </div>
+                        </form>
+                        
+                        <div id="water-result" class="calculator-result">
+                            <p>Günlük su ihtiyacınız: <span id="water-value">--</span> ml</p>
+                            <p>Bu yaklaşık <span id="water-glasses">--</span> bardak suya eşdeğerdir (200 ml/bardak)</p>
+                        </div>
+                        
+                        <div class="calculator-info">
+                            <p><small>Not: Su ihtiyacı hava sıcaklığı, egzersiz yoğunluğu ve bireysel özelliklerinize göre değişiklik gösterebilir. Susama hissi oluşmadan su içmeyi alışkanlık haline getirin.</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bazal Metabolizma Hızı (BMR) Hesaplayıcı -->
+                <div class="calculator-card">
+                    <div class="calculator-header">
+                        <i class="fas fa-fire-alt"></i>
+                        <h3>Bazal Metabolizma Hızı (BMR) Hesaplayıcı</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <p>Dinlenme halinde vücudunuzun harcadığı enerji miktarını hesaplayın. Bu, temel enerji ihtiyacınızı belirler.</p>
+                        
+                        <form id="bmr-form" class="calculator-form">
+                            <div class="form-group">
+                                <label for="bmr-gender">Cinsiyet</label>
+                                <select id="bmr-gender" required>
+                                    <option value="">Seçiniz</option>
+                                    <option value="male">Erkek</option>
+                                    <option value="female">Kadın</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bmr-age">Yaş</label>
+                                <input type="number" id="bmr-age" min="15" max="100" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bmr-weight">Kilo (kg)</label>
+                                <input type="number" id="bmr-weight" min="30" max="300" step="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bmr-height">Boy (cm)</label>
+                                <input type="number" id="bmr-height" min="100" max="250" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bmr-formula">Hesaplama Formülü</label>
+                                <select id="bmr-formula" required>
+                                    <option value="mifflin">Mifflin-St Jeor</option>
+                                    <option value="harris">Harris-Benedict</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <button type="button" id="calculate-bmr" class="btn">Hesapla</button>
+                            </div>
+                        </form>
+                        
+                        <div id="bmr-result" class="calculator-result">
+                            <p>Bazal Metabolizma Hızınız (BMR): <span id="bmr-value">--</span> kcal/gün</p>
+                            <div id="bmr-details" style="display:none;">
+                                <p class="formula-used">Kullanılan formül: <span id="formula-name">--</span></p>
+                                <div class="bmr-activity-levels">
+                                    <h4>Aktivite Seviyesine Göre Günlük Kalori İhtiyacı:</h4>
+                                    <ul>
+                                        <li>Hareketsiz (Az veya Hiç Egzersiz): <span id="bmr-sedentary">--</span> kcal</li>
+                                        <li>Hafif Aktif (Haftada 1-3 gün egzersiz): <span id="bmr-light">--</span> kcal</li>
+                                        <li>Orta Aktif (Haftada 3-5 gün egzersiz): <span id="bmr-moderate">--</span> kcal</li>
+                                        <li>Çok Aktif (Haftada 6-7 gün yoğun egzersiz): <span id="bmr-active">--</span> kcal</li>
+                                        <li>Ekstra Aktif (Fiziksel iş veya günde 2x egzersiz): <span id="bmr-very-active">--</span> kcal</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="calculator-info">
+                            <h4>BMR Nedir?</h4>
+                            <p>Bazal Metabolizma Hızı (BMR), vücudunuzun tam dinlenme halindeyken (uyurken) hayati fonksiyonlarını sürdürmesi için gereken minimum kalori miktarıdır. Bu değer, yaş, cinsiyet, boy ve kilo gibi faktörlere göre değişiklik gösterir.</p>
+                            <p><small>Not: Bu hesaplama genel bir tahmindir. Bireysel farklılıklar ve sağlık durumunuza göre değişiklik gösterebilir.</small></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Yiyecek Kalorisi Hesaplayıcı - geniş format -->
+                <div class="calculator-card wide-card">
+                    <div class="calculator-header">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Yiyecek Kalorisi Hesaplayıcı</h3>
+                    </div>
+                    <div class="calculator-content">
+                        <!-- Sol Sütun - Form ve Özel Yiyecek Ekleme -->
+                        <div class="left-column">
+                            <p>Yaygın yiyecek ve içeceklerin kalori değerlerini hesaplayın.</p>
+                            
+                            <form id="food-calorie-form" class="calculator-form">
+                                <div class="form-group">
+                                    <label for="food-select">Yiyecek/İçecek</label>
+                                    <select id="food-select" required>
+                                        <option value="">Seçiniz</option>
+                                        <optgroup label="Et ve Protein Kaynakları">
+                                            <option value="165" data-unit="100g" data-protein="22.5" data-fat="2.6" data-carb="0">Tavuk Göğüs (Haşlanmış) (100g)</option>
+                                            <option value="135" data-unit="100g" data-protein="21.77" data-fat="2.86" data-carb="0">Hindi Eti (100g)</option>
+                                            <option value="70" data-unit="adet" data-protein="12.58" data-fat="10.61" data-carb="1.12">Yumurta (1 adet, büyük)</option>
+                                            <option value="206" data-unit="100g" data-protein="21.62" data-fat="5.93" data-carb="0">Somon (Izgara) (100g)</option>
+                                            <option value="250" data-unit="100g" data-protein="26" data-fat="15" data-carb="0">Kırmızı Et (Dana, yağsız) (100g)</option>
+                                            <option value="166" data-unit="100g" data-protein="24" data-fat="7" data-carb="0">Ton Balığı (konserve) (100g)</option>
+                                            <option value="270" data-unit="100g" data-protein="15" data-fat="4" data-carb="45">Nohut (pişmiş) (100g)</option>
+                                            <option value="360" data-unit="100g" data-protein="25" data-fat="1" data-carb="60">Kırmızı Mercimek (pişmiş) (100g)</option>
+                                            <option value="185" data-unit="100g" data-protein="9" data-fat="11" data-carb="3.6">Tavuk But (Kızartılmış) (100g)</option>
+                                            <option value="239" data-unit="100g" data-protein="23" data-fat="15.8" data-carb="0">Dana Biftek (100g)</option>
+                                            <option value="143" data-unit="100g" data-protein="20" data-fat="6.3" data-carb="0">Kuzu Eti (Yağsız) (100g)</option>
+                                            <option value="162" data-unit="100g" data-protein="17.4" data-fat="9.8" data-carb="0">Domuz Eti (Yağsız) (100g)</option>
+                                            <option value="154" data-unit="100g" data-protein="21" data-fat="7" data-carb="0">Tavşan Eti (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Süt Ürünleri">
+                                            <option value="61" data-unit="100g" data-protein="3.33" data-fat="3.33" data-carb="5.42">Yoğurt (Sade, tam yağlı) (100g)</option>
+                                            <option value="260" data-unit="100g" data-protein="14" data-fat="21" data-carb="1.5">Peynir (Beyaz peynir) (100g)</option>
+                                            <option value="400" data-unit="100g" data-protein="25" data-fat="33" data-carb="1.3">Cheddar Peyniri (100g)</option>
+                                            <option value="350" data-unit="100g" data-protein="22" data-fat="28" data-carb="1">Kaşar Peyniri (100g)</option>
+                                            <option value="60" data-unit="100g" data-protein="3.33" data-fat="3.33" data-carb="5.42">Süt (tam yağlı) (100g)</option>
+                                            <option value="42" data-unit="100g" data-protein="3.5" data-fat="1.0" data-carb="5.0">Süt (yağsız) (100g)</option>
+                                            <option value="127" data-unit="100g" data-protein="12.4" data-fat="7.0" data-carb="4.3">Lor Peyniri (100g)</option>
+                                            <option value="300" data-unit="100g" data-protein="11" data-fat="24" data-carb="2.5">Krem Peynir (100g)</option>
+                                            <option value="68" data-unit="100g" data-protein="1.9" data-fat="3.8" data-carb="4.7">Dondurma (Sade) (100g)</option>
+                                            <option value="89" data-unit="100g" data-protein="5.6" data-fat="0.2" data-carb="14">Ayran (100g)</option>
+                                            <option value="58" data-unit="100g" data-protein="3.3" data-fat="1.5" data-carb="5.1">Kefir (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Tahıllar ve Ekmekler">
+                                            <option value="215" data-unit="100g" data-protein="7.2" data-fat="1.1" data-carb="53.1">Beyaz Ekmek (100g)</option>
+                                            <option value="212" data-unit="100g" data-protein="7.7" data-fat="1.5" data-carb="41.4">Tam Buğday Ekmeği (100g)</option>
+                                            <option value="370" data-unit="100g" data-protein="12.5" data-fat="1.2" data-carb="75.2">Makarna (100g)</option>
+                                            <option value="130" data-unit="100g" data-protein="1.9" data-fat="5.1" data-carb="19">Pirinç Pilavı (100g)</option>
+                                            <option value="117" data-unit="100g" data-protein="2.7" data-fat="5.5" data-carb="15.7">Bulgur Pilavı (100g)</option>
+                                            <option value="351" data-unit="100g" data-protein="12.5" data-fat="7" data-carb="63.3">Yulaf Ezmesi (100g)</option>
+                                            <option value="264" data-unit="100g" data-protein="8.7" data-fat="2.5" data-carb="52.0">Mısır Unu (100g)</option>
+                                            <option value="125" data-unit="dilim" data-protein="4" data-fat="1" data-carb="25">Mısır Ekmeği (1 dilim)</option>
+                                            <option value="267" data-unit="100g" data-protein="10" data-fat="3" data-carb="49">Kepekli Makarna (100g)</option>
+                                            <option value="354" data-unit="100g" data-protein="12" data-fat="2" data-carb="76">Buğday (100g)</option>
+                                            <option value="132" data-unit="100g" data-protein="3.9" data-fat="0.2" data-carb="30.2">Patlamış Mısır (Yağsız) (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Sebzeler">
+                                            <option value="18" data-unit="100g" data-protein="0.9" data-fat="0.2" data-carb="2.6">Domates (100g)</option>
+                                            <option value="43" data-unit="100g" data-protein="1.0" data-fat="0.2" data-carb="10.1">Havuç (100g)</option>
+                                            <option value="12" data-unit="100g" data-protein="0.6" data-fat="0.2" data-carb="1.8">Salatalık (100g)</option>
+                                            <option value="71" data-unit="100g" data-protein="2.0" data-fat="0.1" data-carb="14.8">Patates (100g)</option>
+                                            <option value="25" data-unit="100g" data-protein="1.2" data-fat="0.2" data-carb="4.8">Biber (100g)</option>
+                                            <option value="23" data-unit="100g" data-protein="2.3" data-fat="0.3" data-carb="3.6">Brokoli (100g)</option>
+                                            <option value="45" data-unit="100g" data-protein="2.0" data-fat="0.9" data-carb="8.2">Bezelye (100g)</option>
+                                            <option value="26" data-unit="100g" data-protein="1.6" data-fat="0.3" data-carb="5.9">Karnabahar (100g)</option>
+                                            <option value="14" data-unit="100g" data-protein="1.4" data-fat="0.1" data-carb="2.2">Kabak (100g)</option>
+                                            <option value="45" data-unit="100g" data-protein="1.5" data-fat="0.2" data-carb="9.5">Soğan (100g)</option>
+                                            <option value="33" data-unit="100g" data-protein="2.4" data-fat="0.3" data-carb="4.3">Patlıcan (100g)</option>
+                                            <option value="16" data-unit="100g" data-protein="0.7" data-fat="0.2" data-carb="3.0">Mantar (100g)</option>
+                                            <option value="21" data-unit="100g" data-protein="2.1" data-fat="0.3" data-carb="3.4">Ispanak (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Meyveler">
+                                            <option value="52" data-unit="100g" data-protein="0.2" data-fat="0.6" data-carb="15">Elma (100g)</option>
+                                            <option value="57" data-unit="100g" data-protein="0.7" data-fat="0.4" data-carb="15.3">Armut (100g)</option>
+                                            <option value="89" data-unit="100g" data-protein="1.2" data-fat="0.2" data-carb="20.4">Muz (100g)</option>
+                                            <option value="30" data-unit="100g" data-protein="0.5" data-fat="0.2" data-carb="6.4">Karpuz (100g)</option>
+                                            <option value="39" data-unit="100g" data-protein="0.7" data-fat="0.5" data-carb="8.4">Çilek (100g)</option>
+                                            <option value="160" data-unit="100g" data-protein="2.0" data-fat="10" data-carb="7.0">Avokado (100g)</option>
+                                            <option value="50" data-unit="100g" data-protein="0.4" data-fat="0.3" data-carb="12.0">Ananas (100g)</option>
+                                            <option value="34" data-unit="100g" data-protein="0.7" data-fat="0.1" data-carb="8.0">Portakal (100g)</option>
+                                            <option value="60" data-unit="100g" data-protein="0.8" data-fat="0.2" data-carb="14.3">Üzüm (100g)</option>
+                                            <option value="47" data-unit="100g" data-protein="0.4" data-fat="0.2" data-carb="11.4">Mandalina (100g)</option>
+                                            <option value="33" data-unit="100g" data-protein="0.6" data-fat="0.2" data-carb="7.5">Şeftali (100g)</option>
+                                            <option value="58" data-unit="100g" data-protein="0.7" data-fat="0.1" data-carb="14.1">Kiraz (100g)</option>
+                                            <option value="16" data-unit="100g" data-protein="0.4" data-fat="0.2" data-carb="3.5">Kavun (100g)</option>
+                                            <option value="81" data-unit="adet" data-protein="0.3" data-fat="0.4" data-carb="21">Hurma (1 adet, orta)</option>
+                                            <option value="42" data-unit="100g" data-protein="0.8" data-fat="0.2" data-carb="9.6">Greyfurt (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Kuru Meyveler ve Yağlı Tohumlar">
+                                            <option value="570" data-unit="100g" data-protein="18.7" data-fat="54.1" data-carb="3.7">Badem (100g)</option>
+                                            <option value="654" data-unit="100g" data-protein="14.4" data-fat="62.5" data-carb="10.6">Ceviz (100g)</option>
+                                            <option value="636" data-unit="100g" data-protein="12.0" data-fat="61.6" data-carb="10.5">Fındık (100g)</option>
+                                            <option value="282" data-unit="100g" data-protein="2.0" data-fat="0.5" data-carb="65">Kuru Hurma (100g)</option>
+                                            <option value="250" data-unit="100g" data-protein="5.3" data-fat="0.6" data-carb="50.5">Kuru Kayısı (100g)</option>
+                                            <option value="304" data-unit="100g" data-protein="3.0" data-fat="1.3" data-carb="66.8">Kuru Üzüm (100g)</option>
+                                            <option value="216" data-unit="100g" data-protein="3.4" data-fat="1.0" data-carb="57.2">Kuru İncir (100g)</option>
+                                            <option value="367" data-unit="100g" data-protein="2.5" data-fat="31.5" data-carb="58.3">Hindistan Cevizi (100g)</option>
+                                            <option value="609" data-unit="100g" data-protein="21" data-fat="50" data-carb="22">Antep Fıstığı (100g)</option>
+                                            <option value="580" data-unit="100g" data-protein="16" data-fat="47" data-carb="31">Kabak Çekirdeği (100g)</option>
+                                            <option value="525" data-unit="100g" data-protein="25" data-fat="45" data-carb="20">Ay Çekirdeği (100g)</option>
+                                            <option value="575" data-unit="100g" data-protein="21" data-fat="49" data-carb="22">Kaju (100g)</option>
+                                            <option value="607" data-unit="100g" data-protein="3.3" data-fat="53.5" data-carb="35">Pikan Cevizi (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Yağlar ve Sağlıklı Yağlar">
+                                            <option value="884" data-unit="100g" data-protein="0" data-fat="99.6" data-carb="0.2">Zeytinyağı (100g)</option>
+                                            <option value="883" data-unit="100g" data-protein="0" data-fat="99.8" data-carb="0">Ayçiçek Yağı (100g)</option>
+                                            <option value="741" data-unit="100g" data-protein="0.7" data-fat="83.2" data-carb="0.6">Tereyağı (100g)</option>
+                                            <option value="898" data-unit="100g" data-protein="0" data-fat="100" data-carb="0">Hindistan Cevizi Yağı (100g)</option>
+                                            <option value="884" data-unit="100g" data-protein="0" data-fat="100" data-carb="0">Avokado Yağı (100g)</option>
+                                            <option value="620" data-unit="100g" data-protein="0" data-fat="69" data-carb="0">Margarin (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Atıştırmalıklar">
+                                            <option value="546" data-unit="100g" data-protein="6" data-fat="37" data-carb="50">Cips (100g)</option>
+                                            <option value="500" data-unit="100g" data-protein="7" data-fat="30" data-carb="60">Çikolata (sütlü) (100g)</option>
+                                            <option value="450" data-unit="100g" data-protein="6" data-fat="15" data-carb="75">Kurabiye (100g)</option>
+                                            <option value="300" data-unit="dilim" data-protein="5" data-fat="20" data-carb="25">Cheesecake (1 dilim)</option>
+                                            <option value="140" data-unit="bar" data-protein="2" data-fat="7" data-carb="17">Müsli Bar (1 adet)</option>
+                                            <option value="524" data-unit="100g" data-protein="7" data-fat="28" data-carb="60">Sütlü Çikolata (100g)</option>
+                                            <option value="598" data-unit="100g" data-protein="9" data-fat="43" data-carb="46">Bitter Çikolata (100g)</option>
+                                            <option value="385" data-unit="100g" data-protein="5" data-fat="18" data-carb="50">Kraker (100g)</option>
+                                            <option value="492" data-unit="100g" data-protein="4.2" data-fat="25.7" data-carb="62">Bisküvi (100g)</option>
+                                            <option value="387" data-unit="100g" data-protein="4.8" data-fat="19.5" data-carb="51">Kek (Sade) (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="İçecekler">
+                                            <option value="0" data-unit="100g" data-protein="0" data-fat="0" data-carb="0">Su (100g)</option>
+                                            <option value="41" data-unit="100g" data-protein="0" data-fat="0" data-carb="10.3">Elma Suyu (100g)</option>
+                                            <option value="45" data-unit="100g" data-protein="0.9" data-fat="0.2" data-carb="8.8">Portakal Suyu (100g)</option>
+                                            <option value="3" data-unit="100g" data-protein="0.2" data-fat="0" data-carb="0.7">Yeşil Çay (100g)</option>
+                                            <option value="1" data-unit="100g" data-protein="0.1" data-fat="0" data-carb="0.2">Siyah Çay (100g)</option>
+                                            <option value="42" data-unit="100g" data-protein="0" data-fat="0" data-carb="10.6">Kola (100g)</option>
+                                            <option value="37" data-unit="100g" data-protein="0" data-fat="0" data-carb="9.3">Gazoz (100g)</option>
+                                            <option value="43" data-unit="100g" data-protein="0.1" data-fat="0" data-carb="10.8">Meyve Suyu (100g)</option>
+                                            <option value="30" data-unit="100g" data-protein="0.3" data-fat="0" data-carb="7.5">Limonata (100g)</option>
+                                            <option value="2" data-unit="100g" data-protein="0.2" data-fat="0" data-carb="0">Bitki Çayı (100g)</option>
+                                            <option value="65" data-unit="100g" data-protein="0" data-fat="0" data-carb="16.3">Enerji İçeceği (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Kahvaltılık Ürünler">
+                                            <option value="52" data-unit="100g" data-protein="0.3" data-fat="0.1" data-carb="14">Reçel (100g)</option>
+                                            <option value="630" data-unit="100g" data-protein="8.1" data-fat="55.2" data-carb="34.7">Fıstık Ezmesi (100g)</option>
+                                            <option value="235" data-unit="100g" data-protein="4.2" data-fat="0.5" data-carb="52.7">Bal (100g)</option>
+                                            <option value="290" data-unit="100g" data-protein="0.1" data-fat="0.2" data-carb="75.8">Pekmez (100g)</option>
+                                            <option value="289" data-unit="100g" data-protein="6.8" data-fat="21" data-carb="17">Çikolatalı Fındık Kreması (100g)</option>
+                                            <option value="220" data-unit="100g" data-protein="9" data-fat="16" data-carb="5">Sucuk (100g)</option>
+                                            <option value="320" data-unit="100g" data-protein="21" data-fat="25" data-carb="5">Sosis (100g)</option>
+                                            <option value="345" data-unit="100g" data-protein="14" data-fat="30" data-carb="2">Pastırma (100g)</option>
+                                            <option value="68" data-unit="100g" data-protein="3.1" data-fat="5.1" data-carb="0">Zeytin (Siyah) (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Fast Food ve Hazır Yemekler">
+                                            <option value="295" data-unit="adet" data-protein="12" data-fat="14" data-carb="29">Hamburger (1 adet, normal)</option>
+                                            <option value="550" data-unit="adet" data-protein="30" data-fat="33" data-carb="35">Hamburger (1 adet, büyük)</option>
+                                            <option value="285" data-unit="porsiyon" data-protein="5" data-fat="14" data-carb="36">Patates Kızartması (1 porsiyon, orta)</option>
+                                            <option value="266" data-unit="dilim" data-protein="11" data-fat="10" data-carb="33">Pizza (1 dilim, orta boy)</option>
+                                            <option value="540" data-unit="adet" data-protein="22" data-fat="26" data-carb="49">Dürüm Döner (Tavuk) (1 adet)</option>
+                                            <option value="670" data-unit="adet" data-protein="38" data-fat="33" data-carb="51">Dürüm Döner (Et) (1 adet)</option>
+                                            <option value="320" data-unit="porsiyon" data-protein="9" data-fat="16" data-carb="34">Tavuk Nugget (8 parça)</option>
+                                            <option value="420" data-unit="porsiyon" data-protein="13" data-fat="26" data-carb="35">Soğan Halkası (1 porsiyon)</option>
+                                        </optgroup>
+                                        <optgroup label="İçecekler (Alkollü)">
+                                            <option value="42" data-unit="100g" data-protein="0.3" data-fat="0" data-carb="3.6">Bira (100g)</option>
+                                            <option value="82" data-unit="100g" data-protein="0" data-fat="0" data-carb="3.4">Şarap (Kırmızı) (100g)</option>
+                                            <option value="74" data-unit="100g" data-protein="0" data-fat="0" data-carb="0.8">Şarap (Beyaz) (100g)</option>
+                                            <option value="222" data-unit="100g" data-protein="0" data-fat="0" data-carb="0">Viski (100g)</option>
+                                            <option value="231" data-unit="100g" data-protein="0" data-fat="0" data-carb="0">Vodka (100g)</option>
+                                            <option value="97" data-unit="100g" data-protein="0" data-fat="0" data-carb="3.5">Rakı (100g)</option>
+                                        </optgroup>
+                                        <optgroup label="Tatlılar ve Unlu Mamüller">
+                                            <option value="389" data-unit="100g" data-protein="4.2" data-fat="18" data-carb="55">Kurabiye (Sade) (100g)</option>
+                                            <option value="375" data-unit="porsiyon" data-protein="5" data-fat="16" data-carb="53">Baklava (1 porsiyon - 100g)</option>
+                                            <option value="348" data-unit="porsiyon" data-protein="4" data-fat="17" data-carb="45">Kadayıf (1 porsiyon - 100g)</option>
+                                            <option value="270" data-unit="porsiyon" data-protein="4" data-fat="10" data-carb="43">Sütlaç (1 kase - 200g)</option>
+                                            <option value="300" data-unit="porsiyon" data-protein="8" data-fat="12" data-carb="42">Tiramisu (1 dilim - 120g)</option>
+                                            <option value="235" data-unit="porsiyon" data-protein="6" data-fat="9" data-carb="34">Profiterol (1 porsiyon - 120g)</option>
+                                            <option value="420" data-unit="porsiyon" data-protein="5" data-fat="20" data-carb="56">Revani (1 dilim - 130g)</option>
+                                            <option value="400" data-unit="porsiyon" data-protein="7" data-fat="18" data-carb="53">San Sebastian Cheesecake (1 dilim - 150g)</option>
+                                        </optgroup>
+                                        <optgroup label="Türk Mutfağı">
+                                            <option value="230" data-unit="porsiyon" data-protein="9" data-fat="7" data-carb="32">Kuru Fasulye (1 porsiyon)</option>
+                                            <option value="310" data-unit="porsiyon" data-protein="5" data-fat="25" data-carb="16">İmam Bayıldı (1 porsiyon)</option>
+                                            <option value="360" data-unit="porsiyon" data-protein="20" data-fat="20" data-carb="25">Etli Güveç (1 porsiyon)</option>
+                                            <option value="185" data-unit="porsiyon" data-protein="3" data-fat="10" data-carb="20">Zeytinyağlı Yaprak Sarma (5 adet)</option>
+                                            <option value="420" data-unit="porsiyon" data-protein="15" data-fat="18" data-carb="47">Mantı (1 porsiyon)</option>
+                                            <option value="450" data-unit="porsiyon" data-protein="17" data-fat="15" data-carb="65">Lahmacun (1 adet)</option>
+                                            <option value="300" data-unit="porsiyon" data-protein="12" data-fat="8" data-carb="40">Mercimek Çorbası (1 kase)</option>
+                                            <option value="750" data-unit="porsiyon" data-protein="30" data-fat="35" data-carb="65">Az Yağlı Adana Kebap + Yoğurt + Bulgur (1 porsiyon)</option>
+                                            <option value="450" data-unit="porsiyon" data-protein="15" data-fat="20" data-carb="45">Çiğ Köfte (Etsiz veya Dana Etiyle) + Ayran (1 porsiyon)</option>
+                                            <option value="450" data-unit="porsiyon" data-protein="12" data-fat="25" data-carb="30">Kıymalı Ispanak + Yoğurt (1 porsiyon)</option>
+                                            <option value="350" data-unit="porsiyon" data-protein="10" data-fat="18" data-carb="35">Menemen (1 porsiyon)</option>
+                                            <option value="550" data-unit="porsiyon" data-protein="25" data-fat="15" data-carb="70">Kuru Fasulye + Pilav (1 porsiyon)</option>
+                                            <option value="450" data-unit="porsiyon" data-protein="15" data-fat="20" data-carb="50">Mantı (Az Yağlı, Yoğurtlu) (1 porsiyon)</option>
+                                        </optgroup>
+                                        <optgroup label="Öğünler ve Tarifler">
+                                            <option value="153" data-unit="porsiyon" data-protein="12.1" data-fat="4.0" data-carb="2.3">Omlet (1 porsiyon - 2 yumurta)</option>
+                                            <option value="140" data-unit="adet" data-protein="12.6" data-fat="10.6" data-carb="1.1">Haşlanmış Yumurta (2 adet)</option>
+                                            <option value="116" data-unit="porsiyon" data-protein="6.1" data-fat="8.6" data-carb="1.0">Menemen (1 porsiyon - 1 yumurta)</option>
+                                            <option value="300" data-unit="kase" data-protein="12" data-fat="4.5" data-carb="44">Yulaf Ezmesi (1 kase, süt ile)</option>
+                                            <option value="180" data-unit="dilim" data-protein="9.3" data-fat="15.3" data-carb="22">Peynirli Börek (1 dilim)</option>
+                                            <option value="420" data-unit="porsiyon" data-protein="22" data-fat="15" data-carb="45">Izgara Tavuk Göğsü ve Pilav (1 porsiyon)</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="food-quantity">Miktar</label>
+                                    <input type="number" id="food-quantity" min="0.1" max="1000" step="0.1" value="1" required>
+                                    <span id="food-unit">(birim)</span>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="button" id="calculate-food-calorie" class="btn">Hesapla</button>
+                                </div>
+                            </form>
+                            
+                            <div class="custom-food-section">
+                                <h4>Özel Yiyecek Ekle</h4>
+                                <form id="custom-food-form" class="calculator-form">
+                                    <div class="form-group">
+                                        <label for="custom-food-name">Yiyecek Adı</label>
+                                        <input type="text" id="custom-food-name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="custom-food-calorie">Kalori (kcal)</label>
+                                        <input type="number" id="custom-food-calorie" min="0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="custom-food-unit">Birim</label>
+                                        <input type="text" id="custom-food-unit" placeholder="örn: 100g, porsiyon, adet" required>
+                                    </div>
+                                    <div class="form-group macro-fields">
+                                        <details>
+                                            <summary>Makro Besin Değerleri (İsteğe Bağlı)</summary>
+                                            <div class="macro-inputs">
+                                                <div class="form-group">
+                                                    <label for="custom-food-protein">Protein (g)</label>
+                                                    <input type="number" id="custom-food-protein" min="0" step="0.1" value="0">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="custom-food-carb">Karbonhidrat (g)</label>
+                                                    <input type="number" id="custom-food-carb" min="0" step="0.1" value="0">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="custom-food-fat">Yağ (g)</label>
+                                                    <input type="number" id="custom-food-fat" min="0" step="0.1" value="0">
+                                                </div>
+                                            </div>
+                                        </details>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" id="add-custom-food" class="btn-small">Ekle</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <!-- Sağ Sütun - Sonuçlar ve Eklenen Yiyecekler -->
+                        <div class="right-column">
+                            <div id="food-calorie-result" class="calculator-result">
+                                <p>Seçilen yiyecek: <span id="food-name">--</span></p>
+                                <p>Kalori: <span id="food-calorie">--</span> kcal</p>
+                                <div id="food-nutrients" style="display: none;">
+                                    <div class="nutrients-container">
+                                        <div class="nutrients-text">
+                                            <p>Protein: <span id="food-protein">--</span> g</p>
+                                            <p>Karbonhidrat: <span id="food-carb">--</span> g</p>
+                                            <p>Yağ: <span id="food-fat">--</span> g</p>
+                                        </div>
+                                        <div class="nutrients-chart">
+                                            <canvas id="nutrientChart" width="150" height="150"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Detaylı beslenme sonucu - yeni eklenen bölüm -->
+                                <div id="detailed-nutrition-result" class="detailed-nutrition" style="display: none;">
+                                    <!-- Bu alan JavaScript ile doldurulacak -->
+                                </div>
+                            </div>
+                            
+                            <div class="food-calculator-added">
+                                <h4>Eklenen Yiyecekler</h4>
+                                <ul id="added-foods-list">
+                                    <!-- Eklenen yiyecekler burada listelenecek -->
+                                </ul>
+                                <div class="total-calories">
+                                    <p>Toplam kalori: <span id="total-calories">0</span> kcal</p>
+                                </div>
+                                <button type="button" id="clear-food-list" class="btn-small">Listeyi Temizle</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Not - Her iki sütun altında -->
+                        <div class="calculator-info">
+                            <p><small>Not: Kalori değerleri ortalamadır ve yiyeceğin türüne, pişirme şekline göre değişiklik gösterebilir. Miktar, belirtilen birim üzerinden hesaplanır.</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-heartbeat"></i> Sağlıklı Yaşam</h3>
+                    <p>Sağlıklı bir yaşam için ihtiyacınız olan her şey.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Erişim</h4>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="beslenme.html">Sağlıklı Beslenme</a></li>
+                        <li><a href="egzersiz.html">Egzersiz</a></li>
+                        <li><a href="zihinsel-saglik.html">Zihinsel Sağlık</a></li>
+                        <li><a href="hesaplayicilar.html">Hesaplayıcılar</a></li>
+                        <li><a href="iletisim.html">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Bizi Takip Edin</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sağlıklı Yaşam. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Hesaplayıcılar sayfası için özel JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // BMI Hesaplayıcı
+            const calculateBMI = document.getElementById('calculate-bmi');
+            if (calculateBMI) {
+                calculateBMI.addEventListener('click', function() {
+                    const weight = parseFloat(document.getElementById('bmi-weight').value);
+                    const height = parseFloat(document.getElementById('bmi-height').value) / 100; // cm'yi metreye çevir
+                    
+                    if (weight && height) {
+                        const bmi = weight / (height * height);
+                        document.getElementById('bmi-value').textContent = bmi.toFixed(1);
+                        
+                        let category = '';
+                        if (bmi < 18.5) {
+                            category = 'Zayıf';
+                        } else if (bmi < 25) {
+                            category = 'Normal';
+                        } else if (bmi < 30) {
+                            category = 'Fazla Kilolu';
+                        } else {
+                            category = 'Obez';
+                        }
+                        
+                        document.getElementById('bmi-category').textContent = category;
+                    }
+                });
+            }
+            
+            // Kalori İhtiyacı Hesaplayıcı
+            const calculateCalorie = document.getElementById('calculate-calorie');
+            if (calculateCalorie) {
+                calculateCalorie.addEventListener('click', function() {
+                    const gender = document.getElementById('calorie-gender').value;
+                    const age = parseInt(document.getElementById('calorie-age').value);
+                    const weight = parseFloat(document.getElementById('calorie-weight').value);
+                    const height = parseFloat(document.getElementById('calorie-height').value);
+                    const activity = parseFloat(document.getElementById('calorie-activity').value);
+                    
+                    if (gender && age && weight && height && activity) {
+                        let bmr = 0;
+                        if (gender === 'male') {
+                            bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+                        } else {
+                            bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+                        }
+                        
+                        const tdee = bmr * activity;
+                        document.getElementById('calorie-value').textContent = Math.round(tdee);
+                        document.getElementById('maintain-calorie').textContent = Math.round(tdee);
+                        document.getElementById('lose-calorie').textContent = Math.round(tdee * 0.85);
+                        document.getElementById('gain-calorie').textContent = Math.round(tdee * 1.15);
+                        
+                        document.getElementById('calorie-details').style.display = 'block';
+                    }
+                });
+            }
+            
+            // İdeal Kilo Hesaplayıcı
+            const calculateIdeal = document.getElementById('calculate-ideal');
+            if (calculateIdeal) {
+                calculateIdeal.addEventListener('click', function() {
+                    const gender = document.getElementById('ideal-gender').value;
+                    const height = parseFloat(document.getElementById('ideal-height').value);
+                    
+                    if (gender && height) {
+                        let ideal = 0;
+                        let range = '';
+                        let formula = '';
+                        
+                        if (gender === 'male') {
+                            // Devine formülü
+                            ideal = 50 + 2.3 * ((height - 152.4) / 2.54);
+                            range = (ideal - 5).toFixed(1) + ' - ' + (ideal + 5).toFixed(1);
+                            formula = 'Devine Formülü';
+                        } else {
+                            // Robinson formülü
+                            ideal = 49 + 1.7 * ((height - 152.4) / 2.54);
+                            range = (ideal - 5).toFixed(1) + ' - ' + (ideal + 5).toFixed(1);
+                            formula = 'Robinson Formülü';
+                        }
+                        
+                        document.getElementById('ideal-range').textContent = range;
+                        document.getElementById('ideal-formula').textContent = formula;
+                    }
+                });
+            }
+            
+            // Su İhtiyacı Hesaplayıcı
+            const calculateWater = document.getElementById('calculate-water');
+            if (calculateWater) {
+                calculateWater.addEventListener('click', function() {
+                    const weight = parseFloat(document.getElementById('water-weight').value);
+                    const activity = parseInt(document.getElementById('water-activity').value);
+                    
+                    if (weight && activity) {
+                        const waterNeed = Math.round(weight * activity);
+                        const glasses = Math.round(waterNeed / 200);
+                        
+                        document.getElementById('water-value').textContent = waterNeed;
+                        document.getElementById('water-glasses').textContent = glasses;
+                    }
+                });
+            }
+            
+            // Yiyecek Kalorisi Hesaplayıcı
+            const foodSelect = document.getElementById('food-select');
+            const foodQuantity = document.getElementById('food-quantity');
+            const foodUnit = document.getElementById('food-unit');
+            const calculateFoodCalorie = document.getElementById('calculate-food-calorie');
+            const clearFoodList = document.getElementById('clear-food-list');
+            
+            let nutrientChart = null; // Chart.js grafiği için değişken
+            
+            if (foodSelect) {
+                foodSelect.addEventListener('change', function() {
+                    const selectedOption = foodSelect.options[foodSelect.selectedIndex];
+                    if (selectedOption.value) {
+                        const unit = selectedOption.dataset.unit;
+                        foodUnit.textContent = `(${unit})`;
+                    } else {
+                        foodUnit.textContent = '(birim)';
+                    }
+                });
+            }
+            
+            // Besin değerleri grafiği oluştur veya güncelle
+            function createOrUpdateNutrientChart(protein, carb, fat) {
+                const ctx = document.getElementById('nutrientChart').getContext('2d');
+                
+                // Grafik zaten varsa yok et
+                if (nutrientChart) {
+                    nutrientChart.destroy();
+                }
+                
+                // Toplam gram miktarı
+                const total = protein + carb + fat;
+                
+                // Yüzde hesapla (0'a bölünmeyi önle)
+                let proteinPercent = total > 0 ? (protein / total * 100).toFixed(1) : 0;
+                let carbPercent = total > 0 ? (carb / total * 100).toFixed(1) : 0;
+                let fatPercent = total > 0 ? (fat / total * 100).toFixed(1) : 0;
+                
+                // Yeni grafik oluştur
+                nutrientChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            `Protein (${proteinPercent}%)`,
+                            `Karbonhidrat (${carbPercent}%)`,
+                            `Yağ (${fatPercent}%)`
+                        ],
+                        datasets: [{
+                            data: [protein, carb, fat],
+                            backgroundColor: [
+                                'rgb(54, 162, 235)',  // Mavi (protein)
+                                'rgb(255, 159, 64)',  // Turuncu (karbonhidrat)
+                                'rgb(255, 99, 132)'   // Kırmızı (yağ)
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const label = context.label || '';
+                                        const value = context.formattedValue || '';
+                                        return `${label}: ${value}g`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
